@@ -1,0 +1,957 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A62BC3DBB13140CB8ECF613 /* Pods_RealityCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C46C12A51CA75C559FA628 /* Pods_RealityCam.framework */; };
+		F128DA8A24884BF60056695B /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F128DA8724884BE60056695B /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F1769C682487F4C0001566E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1769C672487F4C0001566E8 /* AppDelegate.swift */; };
+		F1769C6A2487F4C0001566E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1769C692487F4C0001566E8 /* SceneDelegate.swift */; };
+		F1769C6C2487F4C0001566E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1769C6B2487F4C0001566E8 /* ViewController.swift */; };
+		F1769C6F2487F4C0001566E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1769C6D2487F4C0001566E8 /* Main.storyboard */; };
+		F1769C712487F4C3001566E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1769C702487F4C3001566E8 /* Assets.xcassets */; };
+		F1769C742487F4C3001566E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1769C722487F4C3001566E8 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F128DA8624884BE60056695B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F128DA8124884BE60056695B /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCE0BE7C20D6DE610006E120;
+			remoteInfo = GPUImage_iOS;
+		};
+		F128DA8824884BE60056695B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F128DA8124884BE60056695B /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCE0BE8C20D6E2B80006E120;
+			remoteInfo = GPUImage_macOS;
+		};
+		F128DA8B24884BFB0056695B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F128DA8124884BE60056695B /* GPUImage.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCE0BE7B20D6DE610006E120;
+			remoteInfo = GPUImage_iOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F1F3E861248842040067CCC0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F128DA8A24884BF60056695B /* GPUImage.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A5D50631023879BD7240037B /* Pods-RealityCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealityCam.debug.xcconfig"; path = "Target Support Files/Pods-RealityCam/Pods-RealityCam.debug.xcconfig"; sourceTree = "<group>"; };
+		C00A5BE9FF25AAE6656BEE77 /* Pods-RealityCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealityCam.release.xcconfig"; path = "Target Support Files/Pods-RealityCam/Pods-RealityCam.release.xcconfig"; sourceTree = "<group>"; };
+		D1C46C12A51CA75C559FA628 /* Pods_RealityCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealityCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F128D9AA24884BE50056695B /* rcam01.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = rcam01.metal; sourceTree = "<group>"; };
+		F128D9AC24884BE50056695B /* PictureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInput.swift; sourceTree = "<group>"; };
+		F128D9AD24884BE50056695B /* TextureSamplingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureSamplingOperation.swift; sourceTree = "<group>"; };
+		F128D9AE24884BE50056695B /* MetalRenderingDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderingDevice.swift; sourceTree = "<group>"; };
+		F128D9AF24884BE50056695B /* ShaderUniformSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderUniformSettings.swift; sourceTree = "<group>"; };
+		F128D9B024884BE50056695B /* Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pipeline.swift; sourceTree = "<group>"; };
+		F128D9B124884BE50056695B /* YUVToRGBConversion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = YUVToRGBConversion.metal; sourceTree = "<group>"; };
+		F128D9B324884BE50056695B /* Vibrance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vibrance.swift; sourceTree = "<group>"; };
+		F128D9B424884BE50056695B /* SwirlDistortion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwirlDistortion.swift; sourceTree = "<group>"; };
+		F128D9B524884BE50056695B /* SourceOverBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SourceOverBlend.metal; sourceTree = "<group>"; };
+		F128D9B624884BE50056695B /* LightenBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightenBlend.swift; sourceTree = "<group>"; };
+		F128D9B724884BE50056695B /* Posterize.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Posterize.metal; sourceTree = "<group>"; };
+		F128D9B824884BE50056695B /* PinchDistortion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchDistortion.swift; sourceTree = "<group>"; };
+		F128D9B924884BE50056695B /* ColorBurnBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorBurnBlend.metal; sourceTree = "<group>"; };
+		F128D9BA24884BE50056695B /* ChromaKeyBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaKeyBlend.swift; sourceTree = "<group>"; };
+		F128D9BB24884BE50056695B /* LookupFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = LookupFilter.metal; sourceTree = "<group>"; };
+		F128D9BC24884BE50056695B /* MultiplyBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplyBlend.swift; sourceTree = "<group>"; };
+		F128D9BD24884BE50056695B /* Luminance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Luminance.swift; sourceTree = "<group>"; };
+		F128D9BE24884BE50056695B /* MonochromeFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MonochromeFilter.metal; sourceTree = "<group>"; };
+		F128D9BF24884BE50056695B /* HueBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueBlend.swift; sourceTree = "<group>"; };
+		F128D9C024884BE50056695B /* ExclusionBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ExclusionBlend.metal; sourceTree = "<group>"; };
+		F128D9C124884BE50056695B /* AlphaBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaBlend.swift; sourceTree = "<group>"; };
+		F128D9C224884BE50056695B /* GlassSphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassSphere.swift; sourceTree = "<group>"; };
+		F128D9C324884BE50056695B /* GammaAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GammaAdjustment.metal; sourceTree = "<group>"; };
+		F128D9C424884BE50056695B /* OpacityAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = OpacityAdjustment.metal; sourceTree = "<group>"; };
+		F128D9C524884BE50056695B /* TiltShift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiltShift.swift; sourceTree = "<group>"; };
+		F128D9C624884BE50056695B /* LevelsAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = LevelsAdjustment.metal; sourceTree = "<group>"; };
+		F128D9C724884BE50056695B /* WhiteBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteBalance.swift; sourceTree = "<group>"; };
+		F128D9C824884BE50056695B /* HighlightsAndShadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsAndShadows.swift; sourceTree = "<group>"; };
+		F128D9C924884BE50056695B /* LuminanceRangeReduction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuminanceRangeReduction.swift; sourceTree = "<group>"; };
+		F128D9CA24884BE50056695B /* LowPassFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowPassFilter.swift; sourceTree = "<group>"; };
+		F128D9CB24884BE50056695B /* ChromaKey.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ChromaKey.metal; sourceTree = "<group>"; };
+		F128D9CC24884BE50056695B /* iOSBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSBlur.swift; sourceTree = "<group>"; };
+		F128D9CD24884BE50056695B /* Solarize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solarize.swift; sourceTree = "<group>"; };
+		F128D9CE24884BE50056695B /* Pixellate.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Pixellate.metal; sourceTree = "<group>"; };
+		F128D9CF24884BE50056695B /* LuminanceThreshold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuminanceThreshold.swift; sourceTree = "<group>"; };
+		F128D9D024884BE50056695B /* ContrastAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ContrastAdjustment.metal; sourceTree = "<group>"; };
+		F128D9D124884BE50056695B /* TexelSamplingTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TexelSamplingTypes.h; sourceTree = "<group>"; };
+		F128D9D224884BE50056695B /* Laplacian.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Laplacian.metal; sourceTree = "<group>"; };
+		F128D9D324884BE50056695B /* HalfTone.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = HalfTone.metal; sourceTree = "<group>"; };
+		F128D9D424884BE50056695B /* DissolveBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DissolveBlend.metal; sourceTree = "<group>"; };
+		F128D9D524884BE50056695B /* BrightnessAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BrightnessAdjustment.metal; sourceTree = "<group>"; };
+		F128D9D624884BE50056695B /* AdaptiveThreshold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveThreshold.swift; sourceTree = "<group>"; };
+		F128D9D724884BE50056695B /* SphereRefraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SphereRefraction.swift; sourceTree = "<group>"; };
+		F128D9D824884BE50056695B /* HardLightBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardLightBlend.swift; sourceTree = "<group>"; };
+		F128D9D924884BE50056695B /* MissEtikateFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissEtikateFilter.swift; sourceTree = "<group>"; };
+		F128D9DA24884BE50056695B /* Vignette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vignette.swift; sourceTree = "<group>"; };
+		F128D9DB24884BE50056695B /* SaturationAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationAdjustment.swift; sourceTree = "<group>"; };
+		F128D9DC24884BE50056695B /* Haze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haze.swift; sourceTree = "<group>"; };
+		F128D9DD24884BE60056695B /* OverlayBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = OverlayBlend.metal; sourceTree = "<group>"; };
+		F128D9DE24884BE60056695B /* OperationShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperationShaderTypes.h; sourceTree = "<group>"; };
+		F128D9DF24884BE60056695B /* ColorSwizzle.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorSwizzle.metal; sourceTree = "<group>"; };
+		F128D9E024884BE60056695B /* LinearBurnBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearBurnBlend.swift; sourceTree = "<group>"; };
+		F128D9E124884BE60056695B /* AmatorkaFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmatorkaFilter.swift; sourceTree = "<group>"; };
+		F128D9E224884BE60056695B /* ColorDodgeBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorDodgeBlend.metal; sourceTree = "<group>"; };
+		F128D9E424884BE60056695B /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_soft_elegance_2.png; sourceTree = "<group>"; };
+		F128D9E524884BE60056695B /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_soft_elegance_1.png; sourceTree = "<group>"; };
+		F128D9E624884BE60056695B /* lookup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup.png; sourceTree = "<group>"; };
+		F128D9E724884BE60056695B /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_amatorka.png; sourceTree = "<group>"; };
+		F128D9E824884BE60056695B /* lookup_miss_etikate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_miss_etikate.png; sourceTree = "<group>"; };
+		F128D9E924884BE60056695B /* Sketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sketch.swift; sourceTree = "<group>"; };
+		F128D9EA24884BE60056695B /* Convolution3x3.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Convolution3x3.metal; sourceTree = "<group>"; };
+		F128D9EB24884BE60056695B /* FalseColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalseColor.swift; sourceTree = "<group>"; };
+		F128D9EC24884BE60056695B /* DifferenceBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifferenceBlend.swift; sourceTree = "<group>"; };
+		F128D9ED24884BE60056695B /* PolkaDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolkaDot.swift; sourceTree = "<group>"; };
+		F128D9EE24884BE60056695B /* ToonFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToonFilter.swift; sourceTree = "<group>"; };
+		F128D9EF24884BE60056695B /* KuwaharaFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = KuwaharaFilter.metal; sourceTree = "<group>"; };
+		F128D9F024884BE60056695B /* LocalBinaryPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBinaryPattern.swift; sourceTree = "<group>"; };
+		F128D9F124884BE60056695B /* HueAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueAdjustment.swift; sourceTree = "<group>"; };
+		F128D9F224884BE60056695B /* BulgeDistortion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BulgeDistortion.metal; sourceTree = "<group>"; };
+		F128D9F324884BE60056695B /* NormalBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalBlend.swift; sourceTree = "<group>"; };
+		F128D9F424884BE60056695B /* MedianFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedianFilter.swift; sourceTree = "<group>"; };
+		F128D9F524884BE60056695B /* RGBAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = RGBAdjustment.metal; sourceTree = "<group>"; };
+		F128D9F624884BE60056695B /* SobelEdgeDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SobelEdgeDetection.swift; sourceTree = "<group>"; };
+		F128D9F724884BE60056695B /* ColourFASTFeatureDetection.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColourFASTFeatureDetection.metal; sourceTree = "<group>"; };
+		F128D9F824884BE60056695B /* SaturationBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SaturationBlend.metal; sourceTree = "<group>"; };
+		F128D9F924884BE60056695B /* ColorLocalBinaryPattern.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorLocalBinaryPattern.metal; sourceTree = "<group>"; };
+		F128D9FA24884BE60056695B /* StretchDistortion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = StretchDistortion.metal; sourceTree = "<group>"; };
+		F128D9FB24884BE60056695B /* ThresholdSobelEdgeDetection.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ThresholdSobelEdgeDetection.metal; sourceTree = "<group>"; };
+		F128D9FC24884BE60056695B /* LuminosityBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuminosityBlend.swift; sourceTree = "<group>"; };
+		F128D9FD24884BE60056695B /* Crosshatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crosshatch.swift; sourceTree = "<group>"; };
+		F128D9FE24884BE60056695B /* ExposureAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureAdjustment.swift; sourceTree = "<group>"; };
+		F128D9FF24884BE60056695B /* PolarPixellate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolarPixellate.swift; sourceTree = "<group>"; };
+		F128DA0024884BE60056695B /* SoftLightBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SoftLightBlend.metal; sourceTree = "<group>"; };
+		F128DA0124884BE60056695B /* ColorBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBlend.swift; sourceTree = "<group>"; };
+		F128DA0224884BE60056695B /* ZoomBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomBlur.swift; sourceTree = "<group>"; };
+		F128DA0324884BE60056695B /* ThresholdSketch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresholdSketch.swift; sourceTree = "<group>"; };
+		F128DA0424884BE60056695B /* PrewittEdgeDetection.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PrewittEdgeDetection.metal; sourceTree = "<group>"; };
+		F128DA0524884BE60056695B /* GaussianBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaussianBlur.swift; sourceTree = "<group>"; };
+		F128DA0624884BE60056695B /* SoftElegance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftElegance.swift; sourceTree = "<group>"; };
+		F128DA0724884BE60056695B /* KuwaharaRadius3Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuwaharaRadius3Filter.swift; sourceTree = "<group>"; };
+		F128DA0824884BE60056695B /* AddBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AddBlend.metal; sourceTree = "<group>"; };
+		F128DA0924884BE60056695B /* DivideBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DivideBlend.metal; sourceTree = "<group>"; };
+		F128DA0A24884BE60056695B /* ColorMatrixFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorMatrixFilter.metal; sourceTree = "<group>"; };
+		F128DA0B24884BE60056695B /* Sharpen.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Sharpen.metal; sourceTree = "<group>"; };
+		F128DA0C24884BE60056695B /* MotionBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionBlur.swift; sourceTree = "<group>"; };
+		F128DA0D24884BE60056695B /* ColorInversion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorInversion.metal; sourceTree = "<group>"; };
+		F128DA0E24884BE60056695B /* DarkenBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkenBlend.swift; sourceTree = "<group>"; };
+		F128DA0F24884BE60056695B /* ImageBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBuffer.swift; sourceTree = "<group>"; };
+		F128DA1024884BE60056695B /* SubtractBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SubtractBlend.metal; sourceTree = "<group>"; };
+		F128DA1124884BE60056695B /* HighlightAndShadowTint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightAndShadowTint.swift; sourceTree = "<group>"; };
+		F128DA1224884BE60056695B /* ScreenBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenBlend.swift; sourceTree = "<group>"; };
+		F128DA1324884BE60056695B /* CGAColorspace.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = CGAColorspace.metal; sourceTree = "<group>"; };
+		F128DA1424884BE60056695B /* SmoothToonFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmoothToonFilter.swift; sourceTree = "<group>"; };
+		F128DA1524884BE60056695B /* AlphaBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AlphaBlend.metal; sourceTree = "<group>"; };
+		F128DA1624884BE60056695B /* GlassSphere.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GlassSphere.metal; sourceTree = "<group>"; };
+		F128DA1724884BE60056695B /* GammaAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GammaAdjustment.swift; sourceTree = "<group>"; };
+		F128DA1824884BE60056695B /* OpacityAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpacityAdjustment.swift; sourceTree = "<group>"; };
+		F128DA1924884BE60056695B /* NearbyTexelSampling.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = NearbyTexelSampling.metal; sourceTree = "<group>"; };
+		F128DA1A24884BE60056695B /* MultiplyBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MultiplyBlend.metal; sourceTree = "<group>"; };
+		F128DA1B24884BE60056695B /* Luminance.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Luminance.metal; sourceTree = "<group>"; };
+		F128DA1C24884BE60056695B /* MonochromeFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonochromeFilter.swift; sourceTree = "<group>"; };
+		F128DA1D24884BE60056695B /* HueBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = HueBlend.metal; sourceTree = "<group>"; };
+		F128DA1E24884BE60056695B /* SepiaToneFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SepiaToneFilter.swift; sourceTree = "<group>"; };
+		F128DA1F24884BE60056695B /* ExclusionBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExclusionBlend.swift; sourceTree = "<group>"; };
+		F128DA2024884BE60056695B /* PinchDistortion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PinchDistortion.metal; sourceTree = "<group>"; };
+		F128DA2124884BE60056695B /* ColorBurnBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBurnBlend.swift; sourceTree = "<group>"; };
+		F128DA2224884BE60056695B /* ChromaKeyBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ChromaKeyBlend.metal; sourceTree = "<group>"; };
+		F128DA2324884BE60056695B /* LookupFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookupFilter.swift; sourceTree = "<group>"; };
+		F128DA2424884BE60056695B /* Vibrance.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Vibrance.metal; sourceTree = "<group>"; };
+		F128DA2524884BE60056695B /* SwirlDistortion.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SwirlDistortion.metal; sourceTree = "<group>"; };
+		F128DA2624884BE60056695B /* SourceOverBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceOverBlend.swift; sourceTree = "<group>"; };
+		F128DA2724884BE60056695B /* LightenBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = LightenBlend.metal; sourceTree = "<group>"; };
+		F128DA2824884BE60056695B /* Posterize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Posterize.swift; sourceTree = "<group>"; };
+		F128DA2924884BE60056695B /* Laplacian.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Laplacian.swift; sourceTree = "<group>"; };
+		F128DA2A24884BE60056695B /* HalfTone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfTone.swift; sourceTree = "<group>"; };
+		F128DA2B24884BE60056695B /* DissolveBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissolveBlend.swift; sourceTree = "<group>"; };
+		F128DA2C24884BE60056695B /* BrightnessAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessAdjustment.swift; sourceTree = "<group>"; };
+		F128DA2D24884BE60056695B /* Solarize.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Solarize.metal; sourceTree = "<group>"; };
+		F128DA2E24884BE60056695B /* SolidColorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidColorGenerator.swift; sourceTree = "<group>"; };
+		F128DA2F24884BE60056695B /* Pixellate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pixellate.swift; sourceTree = "<group>"; };
+		F128DA3024884BE60056695B /* LuminanceThreshold.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = LuminanceThreshold.metal; sourceTree = "<group>"; };
+		F128DA3124884BE60056695B /* ContrastAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastAdjustment.swift; sourceTree = "<group>"; };
+		F128DA3224884BE60056695B /* LuminanceRangeReduction.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = LuminanceRangeReduction.metal; sourceTree = "<group>"; };
+		F128DA3324884BE60056695B /* ChromaKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChromaKey.swift; sourceTree = "<group>"; };
+		F128DA3424884BE60056695B /* TiltShift.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TiltShift.metal; sourceTree = "<group>"; };
+		F128DA3524884BE60056695B /* LevelsAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsAdjustment.swift; sourceTree = "<group>"; };
+		F128DA3624884BE60056695B /* WhiteBalance.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = WhiteBalance.metal; sourceTree = "<group>"; };
+		F128DA3724884BE60056695B /* HighlightsAndShadows.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = HighlightsAndShadows.metal; sourceTree = "<group>"; };
+		F128DA3824884BE60056695B /* DifferenceBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DifferenceBlend.metal; sourceTree = "<group>"; };
+		F128DA3924884BE60056695B /* PolkaDot.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PolkaDot.metal; sourceTree = "<group>"; };
+		F128DA3A24884BE60056695B /* ToonFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ToonFilter.metal; sourceTree = "<group>"; };
+		F128DA3B24884BE60056695B /* KuwaharaFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuwaharaFilter.swift; sourceTree = "<group>"; };
+		F128DA3C24884BE60056695B /* LocalBinaryPattern.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = LocalBinaryPattern.metal; sourceTree = "<group>"; };
+		F128DA3D24884BE60056695B /* HueAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = HueAdjustment.metal; sourceTree = "<group>"; };
+		F128DA3E24884BE60056695B /* BulgeDistortion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulgeDistortion.swift; sourceTree = "<group>"; };
+		F128DA3F24884BE60056695B /* NormalBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = NormalBlend.metal; sourceTree = "<group>"; };
+		F128DA4024884BE60056695B /* MedianFilter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MedianFilter.metal; sourceTree = "<group>"; };
+		F128DA4124884BE60056695B /* LinearBurnBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = LinearBurnBlend.metal; sourceTree = "<group>"; };
+		F128DA4224884BE60056695B /* ColorDodgeBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDodgeBlend.swift; sourceTree = "<group>"; };
+		F128DA4324884BE60056695B /* Sketch.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Sketch.metal; sourceTree = "<group>"; };
+		F128DA4424884BE60056695B /* Convolution3x3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convolution3x3.swift; sourceTree = "<group>"; };
+		F128DA4524884BE60056695B /* FalseColor.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = FalseColor.metal; sourceTree = "<group>"; };
+		F128DA4624884BE60056695B /* HighPassFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighPassFilter.swift; sourceTree = "<group>"; };
+		F128DA4724884BE60056695B /* Haze.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Haze.metal; sourceTree = "<group>"; };
+		F128DA4824884BE60056695B /* OverlayBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayBlend.swift; sourceTree = "<group>"; };
+		F128DA4924884BE60056695B /* AdaptiveThreshold.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AdaptiveThreshold.metal; sourceTree = "<group>"; };
+		F128DA4A24884BE60056695B /* SphereRefraction.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SphereRefraction.metal; sourceTree = "<group>"; };
+		F128DA4B24884BE60056695B /* HardLightBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = HardLightBlend.metal; sourceTree = "<group>"; };
+		F128DA4C24884BE60056695B /* Vignette.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Vignette.metal; sourceTree = "<group>"; };
+		F128DA4D24884BE60056695B /* BoxBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxBlur.swift; sourceTree = "<group>"; };
+		F128DA4E24884BE60056695B /* SaturationAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SaturationAdjustment.metal; sourceTree = "<group>"; };
+		F128DA4F24884BE60056695B /* MotionBlur.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MotionBlur.metal; sourceTree = "<group>"; };
+		F128DA5024884BE60056695B /* ColorInversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInversion.swift; sourceTree = "<group>"; };
+		F128DA5124884BE60056695B /* DarkenBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = DarkenBlend.metal; sourceTree = "<group>"; };
+		F128DA5224884BE60056695B /* EmbossFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbossFilter.swift; sourceTree = "<group>"; };
+		F128DA5324884BE60056695B /* BlendShaderTypes.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = BlendShaderTypes.metal; sourceTree = "<group>"; };
+		F128DA5424884BE60056695B /* SubtractBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtractBlend.swift; sourceTree = "<group>"; };
+		F128DA5524884BE60056695B /* HighlightAndShadowTint.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = HighlightAndShadowTint.metal; sourceTree = "<group>"; };
+		F128DA5624884BE60056695B /* ScreenBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ScreenBlend.metal; sourceTree = "<group>"; };
+		F128DA5724884BE60056695B /* CGAColorspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGAColorspace.swift; sourceTree = "<group>"; };
+		F128DA5824884BE60056695B /* ThresholdSketch.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ThresholdSketch.metal; sourceTree = "<group>"; };
+		F128DA5924884BE60056695B /* PrewittEdgeDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrewittEdgeDetection.swift; sourceTree = "<group>"; };
+		F128DA5A24884BE60056695B /* KuwaharaRadius3Filter.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = KuwaharaRadius3Filter.metal; sourceTree = "<group>"; };
+		F128DA5B24884BE60056695B /* Passthrough.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Passthrough.metal; sourceTree = "<group>"; };
+		F128DA5C24884BE60056695B /* AddBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBlend.swift; sourceTree = "<group>"; };
+		F128DA5D24884BE60056695B /* DivideBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DivideBlend.swift; sourceTree = "<group>"; };
+		F128DA5E24884BE60056695B /* ColorMatrixFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMatrixFilter.swift; sourceTree = "<group>"; };
+		F128DA5F24884BE60056695B /* Sharpen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharpen.swift; sourceTree = "<group>"; };
+		F128DA6024884BE60056695B /* ThresholdSobelEdgeDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresholdSobelEdgeDetection.swift; sourceTree = "<group>"; };
+		F128DA6124884BE60056695B /* LuminosityBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = LuminosityBlend.metal; sourceTree = "<group>"; };
+		F128DA6224884BE60056695B /* Crosshatch.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Crosshatch.metal; sourceTree = "<group>"; };
+		F128DA6324884BE60056695B /* ExposureAdjustment.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ExposureAdjustment.metal; sourceTree = "<group>"; };
+		F128DA6424884BE60056695B /* PolarPixellate.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = PolarPixellate.metal; sourceTree = "<group>"; };
+		F128DA6524884BE60056695B /* BlendShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BlendShaderTypes.h; sourceTree = "<group>"; };
+		F128DA6624884BE60056695B /* SoftLightBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftLightBlend.swift; sourceTree = "<group>"; };
+		F128DA6724884BE60056695B /* ZoomBlur.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ZoomBlur.metal; sourceTree = "<group>"; };
+		F128DA6824884BE60056695B /* ColorBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = ColorBlend.metal; sourceTree = "<group>"; };
+		F128DA6924884BE60056695B /* RGBAdjustment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBAdjustment.swift; sourceTree = "<group>"; };
+		F128DA6A24884BE60056695B /* SobelEdgeDetection.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = SobelEdgeDetection.metal; sourceTree = "<group>"; };
+		F128DA6B24884BE60056695B /* ColourFASTFeatureDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourFASTFeatureDetection.swift; sourceTree = "<group>"; };
+		F128DA6C24884BE60056695B /* SaturationBlend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaturationBlend.swift; sourceTree = "<group>"; };
+		F128DA6D24884BE60056695B /* ColorLocalBinaryPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLocalBinaryPattern.swift; sourceTree = "<group>"; };
+		F128DA6E24884BE60056695B /* StretchDistortion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchDistortion.swift; sourceTree = "<group>"; };
+		F128DA6F24884BE60056695B /* BasicOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicOperation.swift; sourceTree = "<group>"; };
+		F128DA7024884BE60056695B /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		F128DA7124884BE60056695B /* Timestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timestamp.swift; sourceTree = "<group>"; };
+		F128DA7224884BE60056695B /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
+		F128DA7324884BE60056695B /* OperationGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationGroup.swift; sourceTree = "<group>"; };
+		F128DA7424884BE60056695B /* MovieOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieOutput.swift; sourceTree = "<group>"; };
+		F128DA7524884BE60056695B /* MetalRendering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRendering.swift; sourceTree = "<group>"; };
+		F128DA7624884BE60056695B /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
+		F128DA7724884BE60056695B /* ImageGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGenerator.swift; sourceTree = "<group>"; };
+		F128DA7824884BE60056695B /* MovieInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInput.swift; sourceTree = "<group>"; };
+		F128DA7924884BE60056695B /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		F128DA7A24884BE60056695B /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		F128DA7B24884BE60056695B /* ImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOrientation.swift; sourceTree = "<group>"; };
+		F128DA7C24884BE60056695B /* PictureOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureOutput.swift; sourceTree = "<group>"; };
+		F128DA7D24884BE60056695B /* YUVToRGBConversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YUVToRGBConversion.swift; sourceTree = "<group>"; };
+		F128DA7E24884BE60056695B /* Texture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
+		F128DA7F24884BE60056695B /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F128DA8024884BE60056695B /* RCam01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCam01.swift; sourceTree = "<group>"; };
+		F128DA8124884BE60056695B /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GPUImage.xcodeproj; sourceTree = "<group>"; };
+		F1769C642487F4C0001566E8 /* RealityCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealityCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1769C672487F4C0001566E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F1769C692487F4C0001566E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F1769C6B2487F4C0001566E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F1769C6E2487F4C0001566E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F1769C702487F4C3001566E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1769C732487F4C3001566E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F1769C752487F4C3001566E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F1769C612487F4C0001566E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A62BC3DBB13140CB8ECF613 /* Pods_RealityCam.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8F2A1C349B34CFD8970E481D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5D50631023879BD7240037B /* Pods-RealityCam.debug.xcconfig */,
+				C00A5BE9FF25AAE6656BEE77 /* Pods-RealityCam.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F128D9A924884BE50056695B /* gpuimage3 */ = {
+			isa = PBXGroup;
+			children = (
+				F128D9AA24884BE50056695B /* rcam01.metal */,
+				F128D9AB24884BE50056695B /* Source */,
+				F128DA8024884BE60056695B /* RCam01.swift */,
+				F128DA8124884BE60056695B /* GPUImage.xcodeproj */,
+			);
+			path = gpuimage3;
+			sourceTree = SOURCE_ROOT;
+		};
+		F128D9AB24884BE50056695B /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F128D9AC24884BE50056695B /* PictureInput.swift */,
+				F128D9AD24884BE50056695B /* TextureSamplingOperation.swift */,
+				F128D9AE24884BE50056695B /* MetalRenderingDevice.swift */,
+				F128D9AF24884BE50056695B /* ShaderUniformSettings.swift */,
+				F128D9B024884BE50056695B /* Pipeline.swift */,
+				F128D9B124884BE50056695B /* YUVToRGBConversion.metal */,
+				F128D9B224884BE50056695B /* Operations */,
+				F128DA6F24884BE60056695B /* BasicOperation.swift */,
+				F128DA7024884BE60056695B /* Size.swift */,
+				F128DA7124884BE60056695B /* Timestamp.swift */,
+				F128DA7224884BE60056695B /* Matrix.swift */,
+				F128DA7324884BE60056695B /* OperationGroup.swift */,
+				F128DA7424884BE60056695B /* MovieOutput.swift */,
+				F128DA7524884BE60056695B /* MetalRendering.swift */,
+				F128DA7624884BE60056695B /* RenderView.swift */,
+				F128DA7724884BE60056695B /* ImageGenerator.swift */,
+				F128DA7824884BE60056695B /* MovieInput.swift */,
+				F128DA7924884BE60056695B /* Camera.swift */,
+				F128DA7A24884BE60056695B /* Position.swift */,
+				F128DA7B24884BE60056695B /* ImageOrientation.swift */,
+				F128DA7C24884BE60056695B /* PictureOutput.swift */,
+				F128DA7D24884BE60056695B /* YUVToRGBConversion.swift */,
+				F128DA7E24884BE60056695B /* Texture.swift */,
+				F128DA7F24884BE60056695B /* Color.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		F128D9B224884BE50056695B /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				F128D9B324884BE50056695B /* Vibrance.swift */,
+				F128D9B424884BE50056695B /* SwirlDistortion.swift */,
+				F128D9B524884BE50056695B /* SourceOverBlend.metal */,
+				F128D9B624884BE50056695B /* LightenBlend.swift */,
+				F128D9B724884BE50056695B /* Posterize.metal */,
+				F128D9B824884BE50056695B /* PinchDistortion.swift */,
+				F128D9B924884BE50056695B /* ColorBurnBlend.metal */,
+				F128D9BA24884BE50056695B /* ChromaKeyBlend.swift */,
+				F128D9BB24884BE50056695B /* LookupFilter.metal */,
+				F128D9BC24884BE50056695B /* MultiplyBlend.swift */,
+				F128D9BD24884BE50056695B /* Luminance.swift */,
+				F128D9BE24884BE50056695B /* MonochromeFilter.metal */,
+				F128D9BF24884BE50056695B /* HueBlend.swift */,
+				F128D9C024884BE50056695B /* ExclusionBlend.metal */,
+				F128D9C124884BE50056695B /* AlphaBlend.swift */,
+				F128D9C224884BE50056695B /* GlassSphere.swift */,
+				F128D9C324884BE50056695B /* GammaAdjustment.metal */,
+				F128D9C424884BE50056695B /* OpacityAdjustment.metal */,
+				F128D9C524884BE50056695B /* TiltShift.swift */,
+				F128D9C624884BE50056695B /* LevelsAdjustment.metal */,
+				F128D9C724884BE50056695B /* WhiteBalance.swift */,
+				F128D9C824884BE50056695B /* HighlightsAndShadows.swift */,
+				F128D9C924884BE50056695B /* LuminanceRangeReduction.swift */,
+				F128D9CA24884BE50056695B /* LowPassFilter.swift */,
+				F128D9CB24884BE50056695B /* ChromaKey.metal */,
+				F128D9CC24884BE50056695B /* iOSBlur.swift */,
+				F128D9CD24884BE50056695B /* Solarize.swift */,
+				F128D9CE24884BE50056695B /* Pixellate.metal */,
+				F128D9CF24884BE50056695B /* LuminanceThreshold.swift */,
+				F128D9D024884BE50056695B /* ContrastAdjustment.metal */,
+				F128D9D124884BE50056695B /* TexelSamplingTypes.h */,
+				F128D9D224884BE50056695B /* Laplacian.metal */,
+				F128D9D324884BE50056695B /* HalfTone.metal */,
+				F128D9D424884BE50056695B /* DissolveBlend.metal */,
+				F128D9D524884BE50056695B /* BrightnessAdjustment.metal */,
+				F128D9D624884BE50056695B /* AdaptiveThreshold.swift */,
+				F128D9D724884BE50056695B /* SphereRefraction.swift */,
+				F128D9D824884BE50056695B /* HardLightBlend.swift */,
+				F128D9D924884BE50056695B /* MissEtikateFilter.swift */,
+				F128D9DA24884BE50056695B /* Vignette.swift */,
+				F128D9DB24884BE50056695B /* SaturationAdjustment.swift */,
+				F128D9DC24884BE50056695B /* Haze.swift */,
+				F128D9DD24884BE60056695B /* OverlayBlend.metal */,
+				F128D9DE24884BE60056695B /* OperationShaderTypes.h */,
+				F128D9DF24884BE60056695B /* ColorSwizzle.metal */,
+				F128D9E024884BE60056695B /* LinearBurnBlend.swift */,
+				F128D9E124884BE60056695B /* AmatorkaFilter.swift */,
+				F128D9E224884BE60056695B /* ColorDodgeBlend.metal */,
+				F128D9E324884BE60056695B /* LookupImages */,
+				F128D9E924884BE60056695B /* Sketch.swift */,
+				F128D9EA24884BE60056695B /* Convolution3x3.metal */,
+				F128D9EB24884BE60056695B /* FalseColor.swift */,
+				F128D9EC24884BE60056695B /* DifferenceBlend.swift */,
+				F128D9ED24884BE60056695B /* PolkaDot.swift */,
+				F128D9EE24884BE60056695B /* ToonFilter.swift */,
+				F128D9EF24884BE60056695B /* KuwaharaFilter.metal */,
+				F128D9F024884BE60056695B /* LocalBinaryPattern.swift */,
+				F128D9F124884BE60056695B /* HueAdjustment.swift */,
+				F128D9F224884BE60056695B /* BulgeDistortion.metal */,
+				F128D9F324884BE60056695B /* NormalBlend.swift */,
+				F128D9F424884BE60056695B /* MedianFilter.swift */,
+				F128D9F524884BE60056695B /* RGBAdjustment.metal */,
+				F128D9F624884BE60056695B /* SobelEdgeDetection.swift */,
+				F128D9F724884BE60056695B /* ColourFASTFeatureDetection.metal */,
+				F128D9F824884BE60056695B /* SaturationBlend.metal */,
+				F128D9F924884BE60056695B /* ColorLocalBinaryPattern.metal */,
+				F128D9FA24884BE60056695B /* StretchDistortion.metal */,
+				F128D9FB24884BE60056695B /* ThresholdSobelEdgeDetection.metal */,
+				F128D9FC24884BE60056695B /* LuminosityBlend.swift */,
+				F128D9FD24884BE60056695B /* Crosshatch.swift */,
+				F128D9FE24884BE60056695B /* ExposureAdjustment.swift */,
+				F128D9FF24884BE60056695B /* PolarPixellate.swift */,
+				F128DA0024884BE60056695B /* SoftLightBlend.metal */,
+				F128DA0124884BE60056695B /* ColorBlend.swift */,
+				F128DA0224884BE60056695B /* ZoomBlur.swift */,
+				F128DA0324884BE60056695B /* ThresholdSketch.swift */,
+				F128DA0424884BE60056695B /* PrewittEdgeDetection.metal */,
+				F128DA0524884BE60056695B /* GaussianBlur.swift */,
+				F128DA0624884BE60056695B /* SoftElegance.swift */,
+				F128DA0724884BE60056695B /* KuwaharaRadius3Filter.swift */,
+				F128DA0824884BE60056695B /* AddBlend.metal */,
+				F128DA0924884BE60056695B /* DivideBlend.metal */,
+				F128DA0A24884BE60056695B /* ColorMatrixFilter.metal */,
+				F128DA0B24884BE60056695B /* Sharpen.metal */,
+				F128DA0C24884BE60056695B /* MotionBlur.swift */,
+				F128DA0D24884BE60056695B /* ColorInversion.metal */,
+				F128DA0E24884BE60056695B /* DarkenBlend.swift */,
+				F128DA0F24884BE60056695B /* ImageBuffer.swift */,
+				F128DA1024884BE60056695B /* SubtractBlend.metal */,
+				F128DA1124884BE60056695B /* HighlightAndShadowTint.swift */,
+				F128DA1224884BE60056695B /* ScreenBlend.swift */,
+				F128DA1324884BE60056695B /* CGAColorspace.metal */,
+				F128DA1424884BE60056695B /* SmoothToonFilter.swift */,
+				F128DA1524884BE60056695B /* AlphaBlend.metal */,
+				F128DA1624884BE60056695B /* GlassSphere.metal */,
+				F128DA1724884BE60056695B /* GammaAdjustment.swift */,
+				F128DA1824884BE60056695B /* OpacityAdjustment.swift */,
+				F128DA1924884BE60056695B /* NearbyTexelSampling.metal */,
+				F128DA1A24884BE60056695B /* MultiplyBlend.metal */,
+				F128DA1B24884BE60056695B /* Luminance.metal */,
+				F128DA1C24884BE60056695B /* MonochromeFilter.swift */,
+				F128DA1D24884BE60056695B /* HueBlend.metal */,
+				F128DA1E24884BE60056695B /* SepiaToneFilter.swift */,
+				F128DA1F24884BE60056695B /* ExclusionBlend.swift */,
+				F128DA2024884BE60056695B /* PinchDistortion.metal */,
+				F128DA2124884BE60056695B /* ColorBurnBlend.swift */,
+				F128DA2224884BE60056695B /* ChromaKeyBlend.metal */,
+				F128DA2324884BE60056695B /* LookupFilter.swift */,
+				F128DA2424884BE60056695B /* Vibrance.metal */,
+				F128DA2524884BE60056695B /* SwirlDistortion.metal */,
+				F128DA2624884BE60056695B /* SourceOverBlend.swift */,
+				F128DA2724884BE60056695B /* LightenBlend.metal */,
+				F128DA2824884BE60056695B /* Posterize.swift */,
+				F128DA2924884BE60056695B /* Laplacian.swift */,
+				F128DA2A24884BE60056695B /* HalfTone.swift */,
+				F128DA2B24884BE60056695B /* DissolveBlend.swift */,
+				F128DA2C24884BE60056695B /* BrightnessAdjustment.swift */,
+				F128DA2D24884BE60056695B /* Solarize.metal */,
+				F128DA2E24884BE60056695B /* SolidColorGenerator.swift */,
+				F128DA2F24884BE60056695B /* Pixellate.swift */,
+				F128DA3024884BE60056695B /* LuminanceThreshold.metal */,
+				F128DA3124884BE60056695B /* ContrastAdjustment.swift */,
+				F128DA3224884BE60056695B /* LuminanceRangeReduction.metal */,
+				F128DA3324884BE60056695B /* ChromaKey.swift */,
+				F128DA3424884BE60056695B /* TiltShift.metal */,
+				F128DA3524884BE60056695B /* LevelsAdjustment.swift */,
+				F128DA3624884BE60056695B /* WhiteBalance.metal */,
+				F128DA3724884BE60056695B /* HighlightsAndShadows.metal */,
+				F128DA3824884BE60056695B /* DifferenceBlend.metal */,
+				F128DA3924884BE60056695B /* PolkaDot.metal */,
+				F128DA3A24884BE60056695B /* ToonFilter.metal */,
+				F128DA3B24884BE60056695B /* KuwaharaFilter.swift */,
+				F128DA3C24884BE60056695B /* LocalBinaryPattern.metal */,
+				F128DA3D24884BE60056695B /* HueAdjustment.metal */,
+				F128DA3E24884BE60056695B /* BulgeDistortion.swift */,
+				F128DA3F24884BE60056695B /* NormalBlend.metal */,
+				F128DA4024884BE60056695B /* MedianFilter.metal */,
+				F128DA4124884BE60056695B /* LinearBurnBlend.metal */,
+				F128DA4224884BE60056695B /* ColorDodgeBlend.swift */,
+				F128DA4324884BE60056695B /* Sketch.metal */,
+				F128DA4424884BE60056695B /* Convolution3x3.swift */,
+				F128DA4524884BE60056695B /* FalseColor.metal */,
+				F128DA4624884BE60056695B /* HighPassFilter.swift */,
+				F128DA4724884BE60056695B /* Haze.metal */,
+				F128DA4824884BE60056695B /* OverlayBlend.swift */,
+				F128DA4924884BE60056695B /* AdaptiveThreshold.metal */,
+				F128DA4A24884BE60056695B /* SphereRefraction.metal */,
+				F128DA4B24884BE60056695B /* HardLightBlend.metal */,
+				F128DA4C24884BE60056695B /* Vignette.metal */,
+				F128DA4D24884BE60056695B /* BoxBlur.swift */,
+				F128DA4E24884BE60056695B /* SaturationAdjustment.metal */,
+				F128DA4F24884BE60056695B /* MotionBlur.metal */,
+				F128DA5024884BE60056695B /* ColorInversion.swift */,
+				F128DA5124884BE60056695B /* DarkenBlend.metal */,
+				F128DA5224884BE60056695B /* EmbossFilter.swift */,
+				F128DA5324884BE60056695B /* BlendShaderTypes.metal */,
+				F128DA5424884BE60056695B /* SubtractBlend.swift */,
+				F128DA5524884BE60056695B /* HighlightAndShadowTint.metal */,
+				F128DA5624884BE60056695B /* ScreenBlend.metal */,
+				F128DA5724884BE60056695B /* CGAColorspace.swift */,
+				F128DA5824884BE60056695B /* ThresholdSketch.metal */,
+				F128DA5924884BE60056695B /* PrewittEdgeDetection.swift */,
+				F128DA5A24884BE60056695B /* KuwaharaRadius3Filter.metal */,
+				F128DA5B24884BE60056695B /* Passthrough.metal */,
+				F128DA5C24884BE60056695B /* AddBlend.swift */,
+				F128DA5D24884BE60056695B /* DivideBlend.swift */,
+				F128DA5E24884BE60056695B /* ColorMatrixFilter.swift */,
+				F128DA5F24884BE60056695B /* Sharpen.swift */,
+				F128DA6024884BE60056695B /* ThresholdSobelEdgeDetection.swift */,
+				F128DA6124884BE60056695B /* LuminosityBlend.metal */,
+				F128DA6224884BE60056695B /* Crosshatch.metal */,
+				F128DA6324884BE60056695B /* ExposureAdjustment.metal */,
+				F128DA6424884BE60056695B /* PolarPixellate.metal */,
+				F128DA6524884BE60056695B /* BlendShaderTypes.h */,
+				F128DA6624884BE60056695B /* SoftLightBlend.swift */,
+				F128DA6724884BE60056695B /* ZoomBlur.metal */,
+				F128DA6824884BE60056695B /* ColorBlend.metal */,
+				F128DA6924884BE60056695B /* RGBAdjustment.swift */,
+				F128DA6A24884BE60056695B /* SobelEdgeDetection.metal */,
+				F128DA6B24884BE60056695B /* ColourFASTFeatureDetection.swift */,
+				F128DA6C24884BE60056695B /* SaturationBlend.swift */,
+				F128DA6D24884BE60056695B /* ColorLocalBinaryPattern.swift */,
+				F128DA6E24884BE60056695B /* StretchDistortion.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
+		F128D9E324884BE60056695B /* LookupImages */ = {
+			isa = PBXGroup;
+			children = (
+				F128D9E424884BE60056695B /* lookup_soft_elegance_2.png */,
+				F128D9E524884BE60056695B /* lookup_soft_elegance_1.png */,
+				F128D9E624884BE60056695B /* lookup.png */,
+				F128D9E724884BE60056695B /* lookup_amatorka.png */,
+				F128D9E824884BE60056695B /* lookup_miss_etikate.png */,
+			);
+			path = LookupImages;
+			sourceTree = "<group>";
+		};
+		F128DA8224884BE60056695B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F128DA8724884BE60056695B /* GPUImage.framework */,
+				F128DA8924884BE60056695B /* GPUImage.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1769C5B2487F4C0001566E8 = {
+			isa = PBXGroup;
+			children = (
+				F1769C662487F4C0001566E8 /* RealityCam */,
+				F1769C652487F4C0001566E8 /* Products */,
+				8F2A1C349B34CFD8970E481D /* Pods */,
+				FC126D8DFECE0A230F5EACC1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F1769C652487F4C0001566E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1769C642487F4C0001566E8 /* RealityCam.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F1769C662487F4C0001566E8 /* RealityCam */ = {
+			isa = PBXGroup;
+			children = (
+				F128D9A924884BE50056695B /* gpuimage3 */,
+				F1769C672487F4C0001566E8 /* AppDelegate.swift */,
+				F1769C692487F4C0001566E8 /* SceneDelegate.swift */,
+				F1769C6B2487F4C0001566E8 /* ViewController.swift */,
+				F1769C6D2487F4C0001566E8 /* Main.storyboard */,
+				F1769C702487F4C3001566E8 /* Assets.xcassets */,
+				F1769C722487F4C3001566E8 /* LaunchScreen.storyboard */,
+				F1769C752487F4C3001566E8 /* Info.plist */,
+			);
+			path = RealityCam;
+			sourceTree = "<group>";
+		};
+		FC126D8DFECE0A230F5EACC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D1C46C12A51CA75C559FA628 /* Pods_RealityCam.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F1769C632487F4C0001566E8 /* RealityCam */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1769C782487F4C3001566E8 /* Build configuration list for PBXNativeTarget "RealityCam" */;
+			buildPhases = (
+				CBAF123D20FF53E5792CDE99 /* [CP] Check Pods Manifest.lock */,
+				F1769C602487F4C0001566E8 /* Sources */,
+				F1769C612487F4C0001566E8 /* Frameworks */,
+				F1769C622487F4C0001566E8 /* Resources */,
+				F1F3E861248842040067CCC0 /* CopyFiles */,
+				1F5EC88BF6D09AC61473D816 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F128DA8C24884BFB0056695B /* PBXTargetDependency */,
+			);
+			name = RealityCam;
+			productName = RealityCam;
+			productReference = F1769C642487F4C0001566E8 /* RealityCam.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F1769C5C2487F4C0001566E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = SDWR;
+				TargetAttributes = {
+					F1769C632487F4C0001566E8 = {
+						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
+					};
+				};
+			};
+			buildConfigurationList = F1769C5F2487F4C0001566E8 /* Build configuration list for PBXProject "RealityCam" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F1769C5B2487F4C0001566E8;
+			productRefGroup = F1769C652487F4C0001566E8 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = F128DA8224884BE60056695B /* Products */;
+					ProjectRef = F128DA8124884BE60056695B /* GPUImage.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				F1769C632487F4C0001566E8 /* RealityCam */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		F128DA8724884BE60056695B /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = F128DA8624884BE60056695B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F128DA8924884BE60056695B /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = F128DA8824884BE60056695B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F1769C622487F4C0001566E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1769C742487F4C3001566E8 /* LaunchScreen.storyboard in Resources */,
+				F1769C712487F4C3001566E8 /* Assets.xcassets in Resources */,
+				F1769C6F2487F4C0001566E8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F5EC88BF6D09AC61473D816 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RealityCam/Pods-RealityCam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RealityCam/Pods-RealityCam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RealityCam/Pods-RealityCam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBAF123D20FF53E5792CDE99 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RealityCam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F1769C602487F4C0001566E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1769C6C2487F4C0001566E8 /* ViewController.swift in Sources */,
+				F1769C682487F4C0001566E8 /* AppDelegate.swift in Sources */,
+				F1769C6A2487F4C0001566E8 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F128DA8C24884BFB0056695B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GPUImage_iOS;
+			targetProxy = F128DA8B24884BFB0056695B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F1769C6D2487F4C0001566E8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1769C6E2487F4C0001566E8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F1769C722487F4C3001566E8 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1769C732487F4C3001566E8 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F1769C762487F4C3001566E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F1769C772487F4C3001566E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F1769C792487F4C3001566E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5D50631023879BD7240037B /* Pods-RealityCam.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = 43R88X5B35;
+				INFOPLIST_FILE = RealityCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvnction.RealityCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F1769C7A2487F4C3001566E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C00A5BE9FF25AAE6656BEE77 /* Pods-RealityCam.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 10;
+				DEVELOPMENT_TEAM = 43R88X5B35;
+				INFOPLIST_FILE = RealityCam/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fvnction.RealityCam;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F1769C5F2487F4C0001566E8 /* Build configuration list for PBXProject "RealityCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1769C762487F4C3001566E8 /* Debug */,
+				F1769C772487F4C3001566E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1769C782487F4C3001566E8 /* Build configuration list for PBXNativeTarget "RealityCam" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1769C792487F4C3001566E8 /* Debug */,
+				F1769C7A2487F4C3001566E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F1769C5C2487F4C0001566E8 /* Project object */;
+}

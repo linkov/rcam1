@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RealityCam" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mtkView contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="d7w-Cp-McL" customClass="RenderView" customModule="GPUImage">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </mtkView>
+                            <slider opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Qeu-Hv-FsU">
+                                <rect key="frame" x="38" y="804" width="338" height="31"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="o4U-zx-oeu"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="mainSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eE1-DP-fNN"/>
+                                </connections>
+                            </slider>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhQ-sk-wjL">
+                                <rect key="frame" x="334" y="423" width="50" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="p0k-10-yaB"/>
+                                    <constraint firstAttribute="width" constant="50" id="qYD-46-8sq"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="camButton"/>
+                                <connections>
+                                    <action selector="photoSaveDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Dt-mb-5cU"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dOi-HX-dJh">
+                                <rect key="frame" x="22" y="61" width="51" height="30"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9QT-3K-67Q"/>
+                                </constraints>
+                                <color key="onTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <action selector="didToggleTwister:" destination="BYZ-38-t0r" eventType="valueChanged" id="30v-iF-KLt"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twister" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9C-tF-Eub">
+                                <rect key="frame" x="79" y="65.5" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="2" height="0.0"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HSS-fn-axw">
+                                <rect key="frame" x="22" y="115" width="51" height="31"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="onTintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <connections>
+                                    <action selector="didToggleConvolut:" destination="BYZ-38-t0r" eventType="valueChanged" id="8Ib-Lt-RrZ"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3x3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54e-pR-7Rv">
+                                <rect key="frame" x="81" y="120.5" width="33" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="2" height="0.0"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="F4W-50-eA5">
+                                <rect key="frame" x="22" y="172" width="51" height="31"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="didToggleFlash:" destination="BYZ-38-t0r" eventType="valueChanged" id="bGZ-gq-s4x"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7A-v4-65l">
+                                <rect key="frame" x="83" y="177.5" width="45" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="2" height="0.0"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qYk-hx-1ub">
+                                <rect key="frame" x="21" y="425" width="50" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Jik-bM-zB3"/>
+                                    <constraint firstAttribute="width" constant="50" id="rQU-Vi-ZtH"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="video2"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startVideoCapture:" destination="BYZ-38-t0r" eventType="touchDown" id="Aup-lu-abL"/>
+                                    <action selector="stopCapture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pnf-iT-Mla"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="d7w-Cp-McL" secondAttribute="bottom" id="0Fw-yd-ClZ"/>
+                            <constraint firstItem="54e-pR-7Rv" firstAttribute="centerY" secondItem="HSS-fn-axw" secondAttribute="centerY" id="65z-bS-gCs"/>
+                            <constraint firstItem="V9C-tF-Eub" firstAttribute="leading" secondItem="dOi-HX-dJh" secondAttribute="trailing" constant="8" id="7Xr-io-4UI"/>
+                            <constraint firstItem="d7w-Cp-McL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hru-y7-ruq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d7w-Cp-McL" secondAttribute="trailing" id="Lvs-ap-LGz"/>
+                            <constraint firstItem="d7w-Cp-McL" firstAttribute="leading" secondItem="F4W-50-eA5" secondAttribute="trailing" constant="-71" id="PR1-k4-GAp"/>
+                            <constraint firstItem="j7A-v4-65l" firstAttribute="leading" secondItem="F4W-50-eA5" secondAttribute="trailing" constant="12" id="Rjb-P8-rgZ"/>
+                            <constraint firstItem="qYk-hx-1ub" firstAttribute="centerY" secondItem="d7w-Cp-McL" secondAttribute="centerY" constant="2" id="Ry6-Z0-HOZ"/>
+                            <constraint firstItem="j7A-v4-65l" firstAttribute="centerY" secondItem="F4W-50-eA5" secondAttribute="centerY" id="UJG-wK-TG9"/>
+                            <constraint firstItem="dOi-HX-dJh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="17" id="ZKl-Vf-xsP"/>
+                            <constraint firstItem="d7w-Cp-McL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="a1C-3I-I5Q"/>
+                            <constraint firstItem="d7w-Cp-McL" firstAttribute="leading" secondItem="HSS-fn-axw" secondAttribute="trailing" constant="-71" id="ak6-hw-GLi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qeu-Hv-FsU" secondAttribute="trailing" constant="40" id="cX4-Eb-mfB"/>
+                            <constraint firstItem="d7w-Cp-McL" firstAttribute="leading" secondItem="qYk-hx-1ub" secondAttribute="trailing" constant="-71" id="e1J-vh-Rmo"/>
+                            <constraint firstItem="54e-pR-7Rv" firstAttribute="leading" secondItem="HSS-fn-axw" secondAttribute="trailing" constant="10" id="nUt-Fh-G9P"/>
+                            <constraint firstItem="mhQ-sk-wjL" firstAttribute="centerY" secondItem="d7w-Cp-McL" secondAttribute="centerY" id="nrE-1f-fZk"/>
+                            <constraint firstItem="HSS-fn-axw" firstAttribute="top" secondItem="dOi-HX-dJh" secondAttribute="bottom" constant="24" id="o8l-Tg-lHv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qeu-Hv-FsU" secondAttribute="bottom" constant="28" id="rXS-IX-MgF"/>
+                            <constraint firstItem="V9C-tF-Eub" firstAttribute="centerY" secondItem="dOi-HX-dJh" secondAttribute="centerY" id="rgZ-l2-aR2"/>
+                            <constraint firstItem="F4W-50-eA5" firstAttribute="top" secondItem="HSS-fn-axw" secondAttribute="bottom" constant="26" id="sjH-ek-mWX"/>
+                            <constraint firstItem="dOi-HX-dJh" firstAttribute="leading" secondItem="d7w-Cp-McL" secondAttribute="leading" constant="22" id="tde-Wj-Iqf"/>
+                            <constraint firstItem="Qeu-Hv-FsU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="vkV-AR-Dbt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mhQ-sk-wjL" secondAttribute="trailing" constant="30" id="wa2-aT-JvY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="convolutSwitch" destination="HSS-fn-axw" id="5OX-uI-ZJM"/>
+                        <outlet property="flashSwitch" destination="F4W-50-eA5" id="mm7-Dh-VMi"/>
+                        <outlet property="photoButton" destination="mhQ-sk-wjL" id="vlK-cX-QBM"/>
+                        <outlet property="renderView" destination="d7w-Cp-McL" id="AJl-BE-DYa"/>
+                        <outlet property="slider" destination="Qeu-Hv-FsU" id="1Jh-5U-Yq8"/>
+                        <outlet property="twisterSwitch" destination="dOi-HX-dJh" id="SYz-q5-W2w"/>
+                        <outlet property="videoButton" destination="qYk-hx-1ub" id="UAF-59-vhB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="camButton" width="44" height="44"/>
+        <image name="video2" width="44" height="44"/>
+    </resources>
+</document>
