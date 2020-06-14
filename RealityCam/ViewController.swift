@@ -56,11 +56,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         super.viewDidLoad()
         
         
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Swipe left to change filter, swipe top to change current filter variation"
-        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-        hud.show(in: self.view)
-        hud.dismiss(afterDelay: 4.0)
+//        let hud = JGProgressHUD(style: .dark)
+//        hud.textLabel.text = "Swipe left to change filter, swipe top to change current filter variation"
+//        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+//        hud.show(in: self.view)
+//        hud.dismiss(afterDelay: 4.0)
         
         
         self.slider.layer.cornerRadius = 15

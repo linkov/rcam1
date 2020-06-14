@@ -297,6 +297,8 @@ float2 c_inv(float2 c) {
 //}
 
 
+
+
 // other goodies: c_Ln
 float4 get_color1(float2 p, float2 change, float timeSinCos, int currentFilterVariant) {
   float t = 0.;
@@ -327,7 +329,7 @@ float4 get_color1(float2 p, float2 change, float timeSinCos, int currentFilterVa
                }
       
       else if (currentFilterVariant == 6) {
-               z = c_mul(z, c_conj(z)) + change;
+               z = c_mul(z, c_to_polar(z)) + c_sin(change);
            }
           
       
@@ -351,30 +353,78 @@ float4 get_color(float2 p) {
   return float4(length(tan(z)) * t * float3(1./64., 1./32., 1./16.), 1.0);
 }
 
+
+float4 get_variation1(float2 p, float2 change, float timeSinCos) {
+    
+    float t = 0.;
+    float2 z = p;
+    float2 c = float2(0.53887, 0.52014);
+
+    for(int i = 0; i < 32; ++i) {
+      if (length(z) > 4.) break;
+      
+        z = c_rem(z, c_ln(z)) + change;
+            
+        
+      t = float(i);
+    }
+
+    return float4(length(z) * t * float3(1./64., 1./32. * timeSinCos, 1./16.), 1.0);
+}
+
+float4 get_variation2(float2 p, float2 change, float timeSinCos) {
+    
+    float t = 0.;
+    float2 z = p;
+    float2 c = float2(0.04903, 0.33769);
+
+    for(int i = 0; i < 32; ++i) {
+      if (length(z) > 2.) break;
+      z = c_mul(c_tan(z), z) + c_sin(change);
+      t = float(i);
+    }
+
+    return float4(length(c_tanh(z)) * float3(1./64., 1./32., 1./16.), 1.0);
+}
+
 fragment half4 rcam06Fragment(SingleInputVertexIO fragmentInput [[stage_in]],
                                 texture2d<half> inputTexture [[texture(0)]],
                                 constant RCam06Uniform& uniform [[ buffer(1) ]])
 {
     
-//    float2 textureCoordinateToUse = float2(fragmentInput.textureCoordinate.x, ((fragmentInput.textureCoordinate.y - 0.4) * 3.0) + 0.4 + uniform.audioLevel);
-//    float dist = distance(0.4 + uniform.audioLevel, textureCoordinateToUse);
-//    textureCoordinateToUse = fragmentInput.textureCoordinate;
-    
+    float2 textureCoordinateToUse = float2(fragmentInput.textureCoordinate.x, ((fragmentInput.textureCoordinate.y - 0.4) * 3.0) + 0.4 + uniform.audioLevel);
+    float dist = distance(0.4 + uniform.filterIntensity, textureCoordinateToUse);
+   // textureCoordinateToUse = fragmentInput.textureCoordinate;
     
     
     constexpr sampler samp(coord::normalized,
     address::clamp_to_edge,
     filter::nearest);
     
-//    half4 fractIn = half4(get_color1(float2(0.5 - 2.0 * textureCoordinateToUse.xy), float2(uniform.filterIntensity, uniform.audioLevel / 10.0), abs(sin(cos(uniform.time+3.*textureCoordinateToUse.y)*2.*textureCoordinateToUse.x+uniform.time))));
-
-    half4 color1 = inputTexture.sample(samp, fragmentInput.textureCoordinate.xy);
 
     
     
-    half4 vcolor =  half4(get_color1(float2(0.5 - 2.0 * fragmentInput.textureCoordinate.xy), float2(uniform.filterIntensity, uniform.filterIntensity / 10.0), 1.0, uniform.filterVariation));
+    half4 vcolor;
+    half4 color;
     
-    half4 color = inputTexture.sample(samp, float2(vcolor.xy));
+    if (uniform.filterVariation == 1) {
+    
+        vcolor  =  half4(get_variation1(float2(0.5 + uniform.filterIntensity - 2.0 * fragmentInput.textureCoordinate.xy), float2((sin( (uniform.filterIntensity * 10.0) + uniform.time / 100.0) * 10 / 100), uniform.filterIntensity / 10.0), 4 / 10.0));
+        color = inputTexture.sample(samp, float2(vcolor.xy));
+
+    } else if(uniform.filterVariation == 2) {
+        
+        vcolor  =  half4(get_variation2(float2(fragmentInput.textureCoordinate.xy), float2((sin(uniform.time / 100.0) ), 1.0),1.0));
+        color = inputTexture.sample(samp, float2(vcolor.xy));
+
+        
+        
+        vcolor  =  half4(get_variation2(float2(0.5 - 2.0 *  fragmentInput.textureCoordinate.xy * (uniform.filterIntensity * 10.0) ), float2(sin(uniform.time / 100.0), vcolor.y / 10.0), 4 / 5.0));
+        color = inputTexture.sample(samp, float2(vcolor.xy));
+    }
+    
+    
+
     return color;
 
 }
