@@ -57,10 +57,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         
         let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Swipe left to change filter"
+        hud.textLabel.text = "Swipe left to change filter, swipe top to change current filter variation"
         hud.indicatorView = JGProgressHUDSuccessIndicatorView()
         hud.show(in: self.view)
-        hud.dismiss(afterDelay: 3.0)
+        hud.dismiss(afterDelay: 4.0)
         
         
         self.slider.layer.cornerRadius = 15
@@ -101,6 +101,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
 
         renderView.addGestureRecognizer(leftSwipe)
         renderView.addGestureRecognizer(rightSwipe)
+        
+        
+        
+        let topSwipe = UISwipeGestureRecognizer(target: self, action: #selector(moveToNextVariation(_:)))
+        let bottomSwipe = UISwipeGestureRecognizer(target: self, action: #selector(moveToNextVariation(_:)))
+
+        topSwipe.direction = .up
+        bottomSwipe.direction = .down
+
+        renderView.addGestureRecognizer(topSwipe)
+        renderView.addGestureRecognizer(bottomSwipe)
+        
+        
         
         updateActiveFilter(selected: filters[selectedIndex])
        
@@ -303,6 +316,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         //camera --> filter --> renderView
        
     }
+    func selectPrevVariation() {
+        
+        let currentFilter = filters[selectedIndex]
+        if (currentFilter.filterVariation != 1) {
+            currentFilter.filterVariation -= 1
+        }
+        
+    }
+    
+    func selectNexVariation() {
+        
+        let currentFilter = filters[selectedIndex]
+        if (currentFilter.filterVariation < 6) {
+            currentFilter.filterVariation += 1
+        }
+
+    }
+    
+    func resetFilterVariation() {
+        let currentFilter = filters[selectedIndex]
+        currentFilter.filterVariation = 1
+    }
     
     func selectPrevFilter() {
         
@@ -349,6 +384,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
        switch sender.direction{
         case .left: self.selectNextFilter()
         case .right:  self.selectPrevFilter()
+        default:
+        return
+        }
+
+    }
+    
+    @objc func moveToNextVariation(_ sender:UISwipeGestureRecognizer) {
+
+       switch sender.direction{
+       case .up: self.selectPrevVariation()
+        case .down:  self.selectNexVariation()
         default:
         return
         }

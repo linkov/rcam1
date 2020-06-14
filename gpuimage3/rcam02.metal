@@ -67,6 +67,7 @@ typedef struct
     float time;
     float filterIntensity;
     float audioLevel;
+    float filterVariation;
 } RCam02Uniform;
 
 fragment half4 rcam02Fragment(SingleInputVertexIO fragmentInput [[stage_in]],

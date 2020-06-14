@@ -154,6 +154,7 @@ typedef struct
     float time;
     float filterIntensity;
     float audioLevel;
+    float filterVariation;
 } RCam04Uniform;
 
 

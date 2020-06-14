@@ -23,6 +23,7 @@ typedef struct
     float time;
     float filterIntensity;
     float audioLevel;
+    float filterVariation;
 } RCam06Uniform;
 
 
@@ -297,14 +298,39 @@ float2 c_inv(float2 c) {
 
 
 // other goodies: c_Ln
-float4 get_color1(float2 p, float2 change, float timeSinCos) {
+float4 get_color1(float2 p, float2 change, float timeSinCos, int currentFilterVariant) {
   float t = 0.;
   float2 z = p;
   float2 c = float2(0.53887, 0.52014);
 
   for(int i = 0; i < 32; ++i) {
     if (length(z) > 4.) break;
-    z = c_mul(z, c_exp(z)) + change;
+    
+    
+          if (currentFilterVariant == 1) {
+              z = c_mul(z, c_exp(z)) + change;
+          } else if (currentFilterVariant == 2) {
+              z = c_mul(z, c_ln(z)) + change;
+          }
+      
+          else if (currentFilterVariant == 3) {
+                   z = c_mul(z, c_tanh(z)) + change;
+               }
+        
+            else if (currentFilterVariant == 4) {
+                     z = c_rem(z, c_ln(z)) + change;
+                 }
+      
+      
+          else if (currentFilterVariant == 5) {
+                   z = c_pow(z, c_ln(z)) + change;
+               }
+      
+      else if (currentFilterVariant == 6) {
+               z = c_mul(z, c_conj(z)) + change;
+           }
+          
+      
     t = float(i);
   }
 
@@ -346,7 +372,7 @@ fragment half4 rcam06Fragment(SingleInputVertexIO fragmentInput [[stage_in]],
 
     
     
-    half4 vcolor =  half4(get_color1(float2(0.5 - 2.0 * fragmentInput.textureCoordinate.xy), float2(uniform.filterIntensity, uniform.filterIntensity / 10.0), 1.0));
+    half4 vcolor =  half4(get_color1(float2(0.5 - 2.0 * fragmentInput.textureCoordinate.xy), float2(uniform.filterIntensity, uniform.filterIntensity / 10.0), 1.0, uniform.filterVariation));
     
     half4 color = inputTexture.sample(samp, float2(vcolor.xy));
     return color;
