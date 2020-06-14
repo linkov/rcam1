@@ -418,6 +418,8 @@
 		F1A52E88248963CD006175CA /* rcam03.metal in Sources */ = {isa = PBXBuildFile; fileRef = F1A52E86248963CD006175CA /* rcam03.metal */; };
 		F1A52E89248963CD006175CA /* RCam03.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A52E87248963CD006175CA /* RCam03.swift */; };
 		F1A52E9424899A15006175CA /* RCamFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A52E9324899A15006175CA /* RCamFilter.swift */; };
+		F1CB1E20249414350086F259 /* rcam06.metal in Sources */ = {isa = PBXBuildFile; fileRef = F1CB1E1E249414350086F259 /* rcam06.metal */; };
+		F1CB1E21249414350086F259 /* RCam06.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB1E1F249414350086F259 /* RCam06.swift */; };
 		F1F3E880248849B20067CCC0 /* RCam01.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F3E87C248849B20067CCC0 /* RCam01.swift */; };
 		F1F3E881248849B20067CCC0 /* rcam01.metal in Sources */ = {isa = PBXBuildFile; fileRef = F1F3E87D248849B20067CCC0 /* rcam01.metal */; };
 /* End PBXBuildFile section */
@@ -652,6 +654,8 @@
 		F1A52E86248963CD006175CA /* rcam03.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = rcam03.metal; sourceTree = "<group>"; };
 		F1A52E87248963CD006175CA /* RCam03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCam03.swift; sourceTree = "<group>"; };
 		F1A52E9324899A15006175CA /* RCamFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCamFilter.swift; sourceTree = "<group>"; };
+		F1CB1E1E249414350086F259 /* rcam06.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = rcam06.metal; sourceTree = "<group>"; };
+		F1CB1E1F249414350086F259 /* RCam06.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCam06.swift; sourceTree = "<group>"; };
 		F1F3E87C248849B20067CCC0 /* RCam01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCam01.swift; sourceTree = "<group>"; };
 		F1F3E87D248849B20067CCC0 /* rcam01.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = rcam01.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -790,6 +794,8 @@
 		BCC6AB67210E62C900F9803A /* Image processing */ = {
 			isa = PBXGroup;
 			children = (
+				F1CB1E1E249414350086F259 /* rcam06.metal */,
+				F1CB1E1F249414350086F259 /* RCam06.swift */,
 				F193E9A6248AD83800C870E6 /* rcam05.metal */,
 				F193E9A7248AD83800C870E6 /* RCam05.swift */,
 				F193E9A2248A9F8D00C870E6 /* rcam04.metal */,
@@ -1150,6 +1156,7 @@
 				7B72DB2B2103CED000A91156 /* AddBlend.metal in Sources */,
 				79CB6DD82108BC650042F87B /* DarkenBlend.swift in Sources */,
 				BCE0BEA220D6E3C80006E120 /* Position.swift in Sources */,
+				F1CB1E20249414350086F259 /* rcam06.metal in Sources */,
 				F193E9A9248AD83800C870E6 /* RCam05.swift in Sources */,
 				79CB6E1D210933B30042F87B /* OverlayBlend.metal in Sources */,
 				795ECAA821ED2967000EF927 /* Sketch.swift in Sources */,
@@ -1197,6 +1204,7 @@
 				BC25F8A922C2B30A00CBBD15 /* ImageBuffer.swift in Sources */,
 				79EB1B7A2125CC360049135E /* MissEtikateFilter.swift in Sources */,
 				795ECAC621EF97F8000EF927 /* ColorLocalBinaryPattern.swift in Sources */,
+				F1CB1E21249414350086F259 /* RCam06.swift in Sources */,
 				79CB6E17210931CD0042F87B /* NormalBlend.metal in Sources */,
 				79EB1B862125D7550049135E /* ChromaKeyBlend.swift in Sources */,
 				BC25F8A122C15E2600CBBD15 /* SoftElegance.swift in Sources */,

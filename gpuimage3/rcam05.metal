@@ -75,18 +75,29 @@ fragment half4 rcam05Fragment(SingleInputVertexIO fragmentInput [[stage_in]],
     
 //    if (dist > 0.80 + uniform.filterIntensity)
 //    {
-        textureCoordinateToUse -= 0.4;
-        float percent = 1.0 - (((0.25 + uniform.filterIntensity) - dist) / (0.25 + uniform.filterIntensity)) * 0.5;
-        percent = percent * percent;
-        
-        textureCoordinateToUse = textureCoordinateToUse * percent;
-        textureCoordinateToUse /= 0.4 + uniform.audioLevel;
-        textureCoordinateToUse.y /= uniform.time / M_PI_F * color.y;
-  //  }
     
     
+//        textureCoordinateToUse -= 0.4;
+//        float percent = 1.0 - (((0.25 + uniform.filterIntensity) - dist) / (0.25 + uniform.filterIntensity)) * 0.5;
+//        percent = percent * percent;
+//
+//        textureCoordinateToUse = textureCoordinateToUse * percent;
+//        textureCoordinateToUse /= 0.4 + uniform.audioLevel;
+//        textureCoordinateToUse.y /= uniform.time / M_PI_F * color.y;
+//
+    
+    
+    //  }
+    
+    float2 uv = -1. + 2. * textureCoordinateToUse;
+    uv  = (0.5 - uv / 2.0);
+    float4 col = float4(
+        abs(sin(cos(uniform.time+3.*uv.y)*2.*uv.x+uniform.time)),
+        abs(cos(sin(uniform.time+2.*uv.x)*3.*uv.y+uniform.time)),
+        uniform.filterIntensity * 1100.,
+        1.0);
 //    constexpr sampler quadSampler(mag_filter::linear, min_filter::linear);
-    return inputTexture.sample(quadSampler, textureCoordinateToUse);
+    return inputTexture.sample(quadSampler, col.xy);
 
 }
 
@@ -94,3 +105,7 @@ fragment half4 rcam05Fragment(SingleInputVertexIO fragmentInput [[stage_in]],
 //({radius = 0.25})()
 //({scale = 0.5})()
 //({center = Position.center})()
+
+
+
+

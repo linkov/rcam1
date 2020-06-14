@@ -83,7 +83,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         self.photoButton.layer.cornerRadius = 14
 //        self.photoButton.layer.masksToBounds = true
         
-        filters = [RCam01(),RCam02(), RCam03(), RCam04(), RCam05()]
+        filters = [RCam06(),RCam01(),RCam02(), RCam03(), RCam04(), RCam05()]
         convolut.convolutionKernel = Matrix3x3(rowMajorValues:[
         3.0, -2.0, -8.0,
         -2.0, 2.1, 0.0,
