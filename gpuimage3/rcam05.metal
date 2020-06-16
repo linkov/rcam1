@@ -90,19 +90,20 @@ fragment half4 rcam05Fragment(SingleInputVertexIO fragmentInput [[stage_in]],
     
     //  }
     
-    float2 uv = -1. + 2. * textureCoordinateToUse;
-    uv  = (0.5 - uv / 2.0);
+//    float2 uv = -1. + 2. * textureCoordinateToUse;
+    float timeParam = 500 - (uniform.filterIntensity * 500);
+    float2 uv  = textureCoordinateToUse;
     float4 col = float4(
-        abs(sin(cos(uniform.time+3.*uv.y)*2.*uv.x+uniform.time)),
-        abs(cos(sin(uniform.time+2.*uv.x)*3.*uv.y+uniform.time)),
-        uniform.filterIntensity * 1100.,
+                        abs(sin(cos( ( (uniform.time / timeParam) +uniform.filterIntensity * 10.0)*uv.y) * (1.0 + uniform.filterIntensity * 10.0) * uv.x +  (uniform.time / timeParam) )),
+        abs(sin(cos(  (uniform.time / timeParam) +  ( uniform.filterIntensity * 10.0)*uv.x) * (1.0 + uniform.filterIntensity * 10.0) * uv.y +  (uniform.time / timeParam))),
+        1.0,
         1.0);
 //    constexpr sampler quadSampler(mag_filter::linear, min_filter::linear);
     return inputTexture.sample(quadSampler, col.xy);
 
 }
 
-
+// abs(sin(cos(uniform.time+3.*uv.y)*2.*uv.x+uniform.time)),
 //({radius = 0.25})()
 //({scale = 0.5})()
 //({center = Position.center})()

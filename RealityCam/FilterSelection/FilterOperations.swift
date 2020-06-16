@@ -704,7 +704,8 @@ let filterOperations: Array<FilterOperationInterface> = [
 //        filterOperationType:.singleInput
 //    ),
     FilterOperation(
-        filter:{Convolution3x3()},
+
+        filter:{ Convolution3x3() },
         listName:"3x3",
         titleName:"3x3",
         sliderConfiguration:.disabled,
@@ -713,11 +714,11 @@ let filterOperations: Array<FilterOperationInterface> = [
             let castFilter = filter as! Convolution3x3
 
             castFilter.convolutionKernel = Matrix3x3(rowMajorValues:[
-                0.0, 1.0, 0.0,
-                1.0, -4.0, 1.0,
-                0.0, 1.0, 0.0])
+            3.0, -2.0, -8.0,
+            -2.0, 2.1, 0.0,
+            0.0, 3.0, -1.0])
             
-            camera --> castFilter --> outputView
+//            camera --> castFilter --> outputView
             
             return nil
         })

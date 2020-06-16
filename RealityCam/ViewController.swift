@@ -96,7 +96,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         self.photoButton.layer.cornerRadius = 14
 //        self.photoButton.layer.masksToBounds = true
         
-        filters = [RCam06(),RCam01(),RCam02(), RCam03(), RCam04(), RCam05()]
+        filters = [RCam05(), RCam06(),RCam01(),RCam02(), RCam03(), RCam04()]
         convolut.convolutionKernel = Matrix3x3(rowMajorValues:[
         3.0, -2.0, -8.0,
         -2.0, 2.1, 0.0,
@@ -693,6 +693,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             return
         }
         
+        if (filter.titleName == "3x3")  {
+            switch filter.filterOperationType {
+                           case .singleInput:
+                return
+                           case .blend:
+                return
+                           case let .custom(filterSetupFunction:setupFunction):
+                            filter.configureCustomFilter(setupFunction(camera,filter.filter,renderView))
+                           }
+        }
+        
         FX1isOn = true
         F1 = filter
         fiButton.titleLabel?.text = filter.titleName
@@ -717,6 +728,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             didToggleFX()
             return
         }
+        
+        if (filter.titleName == "3x3")  {
+            switch filter.filterOperationType {
+                           case .singleInput:
+                return
+                           case .blend:
+                return
+                           case let .custom(filterSetupFunction:setupFunction):
+                            filter.configureCustomFilter(setupFunction(camera,filter.filter,renderView))
+                           }
+        }
+        
+
         
         FX2isOn = true
         F2 = filter
