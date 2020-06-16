@@ -11,15 +11,27 @@ import GPUImage
 import AudioKit
 import JGProgressHUD
 
+protocol FilterSelectionDelegate {
+    func didSelectFilter1(_ filter: FilterOperationInterface)
+    func didSelectFilter2(_ filter: FilterOperationInterface)
+}
 
-
-class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate & FilterSelectionDelegate {
     
     @IBOutlet weak var videoButton: UIButton!
-    @IBOutlet weak var twisterSwitch: UISwitch!
-    @IBOutlet weak var flashSwitch: UISwitch!
-    @IBOutlet weak var convolutSwitch: UISwitch!
 
+    @IBOutlet weak var fx1Slider: UISlider!
+    @IBOutlet weak var fx2Sldier: UISlider!
+    
+    @IBOutlet weak var fiButton: UIButton!
+    @IBOutlet weak var f2Button: UIButton!
+    
+    var F1: FilterOperationInterface?
+    var F2: FilterOperationInterface?
+    
+    var FX1isOn = false;
+    var FX2isOn = false;
+    
     var mic: AKMicrophone!
     var tracker: AKAmplitudeTracker!
     var silence: AKBooster!
@@ -63,19 +75,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
 //        hud.dismiss(afterDelay: 4.0)
         
         
-        self.slider.layer.cornerRadius = 15
-        self.slider.layer.masksToBounds = true
-        self.twisterSwitch.layer.cornerRadius = 15
-        self.twisterSwitch.layer.masksToBounds = true
-        self.convolutSwitch.layer.cornerRadius = 15
-        self.convolutSwitch.layer.masksToBounds = true
-        self.flashSwitch.layer.cornerRadius = 15
-        self.flashSwitch.layer.masksToBounds = true
+//        self.slider.layer.cornerRadius = 15
+//        self.slider.layer.masksToBounds = true
         
+        
+        self.fiButton.layer.cornerRadius = 15
+        self.fiButton.layer.masksToBounds = true
+        
+        self.f2Button.layer.cornerRadius = 15
+        self.f2Button.layer.masksToBounds = true
         
         self.videoButton.layer.borderColor = UIColor.systemYellow.cgColor
         self.videoButton.layer.borderWidth = 2.0
         self.videoButton.layer.cornerRadius = 14
+        
         
         
         self.photoButton.layer.borderColor = UIColor.systemYellow.cgColor
@@ -131,39 +144,42 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
 
     
     
-    @IBAction func didToggleConvolut(_ sender: Any) {
-        
-           camera.stopCapture()
-           camera.removeAllTargets()
-           filters[selectedIndex].removeAllTargets()
-           self.haze.removeAllTargets()
-           self.convolut.removeAllTargets()
+    @IBAction func didToggleFX() {
+
+
         updateActiveFilter(selected: filters[selectedIndex])
     }
-    @IBAction func didToggleFlash(_ sender: Any) {
-        
-           camera.stopCapture()
-           camera.removeAllTargets()
-           filters[selectedIndex].removeAllTargets()
-           self.haze.removeAllTargets()
-            self.twister.removeAllTargets()
-           self.convolut.removeAllTargets()
-        updateActiveFilter(selected: filters[selectedIndex])
-        
-    }
-    
-    @IBAction func didToggleTwister(_ sender: Any) {
-           camera.stopCapture()
-           camera.removeAllTargets()
-           filters[selectedIndex].removeAllTargets()
-           self.haze.removeAllTargets()
-           self.twister.removeAllTargets()
-           self.convolut.removeAllTargets()
-        updateActiveFilter(selected: filters[selectedIndex])
-    }
+//    @IBAction func didToggleFlash(_ sender: Any) {
+//
+//           camera.stopCapture()
+//           camera.removeAllTargets()
+//           filters[selectedIndex].removeAllTargets()
+//            self.haze.removeAllTargets()
+//           self.F1?.filter.removeAllTargets()
+//           self.F2?.filter.removeAllTargets()
+//        updateActiveFilter(selected: filters[selectedIndex])
+//
+//    }
+//
+//    @IBAction func didToggleTwister(_ sender: Any) {
+//
+//
+//
+//           camera.stopCapture()
+//           camera.removeAllTargets()
+//           filters[selectedIndex].removeAllTargets()
+//            self.haze.removeAllTargets()
+//           self.F1?.filter.removeAllTargets()
+//           self.F2?.filter.removeAllTargets()
+//        updateActiveFilter(selected: filters[selectedIndex])
+//    }
 
     func updateActiveFilter(selected: RCamFilter) {
        
+        
+        selected.time = 0.0
+        
+        
         if (loadedImageSource == nil) {
             
 
@@ -175,44 +191,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                  } catch {
                      fatalError("Could not initialize rendering pipeline: \(error)")
                  }
-                 guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
-                 guard device.hasTorch else { print("Torch isn't available"); return }
 
-                 do {
-                     try device.lockForConfiguration()
-                     if (flashSwitch.isOn) {
-                         device.torchMode = .on
-                     } else {
-                         device.torchMode = .off
-                     }
-
-                     device.unlockForConfiguration()
-                 } catch {
-                     print("Torch can't be used")
-                 }
                  camera.addTarget(selected)
     
 
 
                  
-                 if (twisterSwitch.isOn) {
-                     selected.addTarget(self.twister)
+                 if (FX1isOn) {
+                     selected.addTarget(self.F1!.filter)
                      
-                     if (convolutSwitch.isOn) {
+                     if (FX2isOn) {
                          
-                         self.twister.addTarget(self.convolut)
-                         self.convolut.addTarget(renderView)
+                         self.F1?.filter.addTarget(self.F2!.filter)
+                         self.F2?.filter.addTarget(renderView)
                          
                      } else {
                          
-                         if (selected.name == "rcam01" || selected.name == "rcam02" || selected.name == "rcam03") {
-                             
-                               self.twister.addTarget(self.haze)
-                             self.haze.addTarget(renderView)
-                             
-                         } else {
-                             self.twister.addTarget(renderView)
-                         }
+
+                             self.F1?.filter.addTarget(renderView)
+         
                          
                      }
                      
@@ -220,27 +217,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                  } else {
                      
                      
-                     if (convolutSwitch.isOn) {
-                         if (selected.name == "rcam01" || selected.name == "rcam02" || selected.name == "rcam03") {
-                             
-                             selected.addTarget(self.convolut)
-                             self.convolut.addTarget(haze)
-                             self.haze.addTarget(renderView)
-                             
-                         } else {
-                             selected.addTarget(self.convolut)
-                             self.convolut.addTarget(renderView)
-                         }
+                     if (FX2isOn) {
+
+                             selected.addTarget(self.F2!.filter)
+                             self.F2!.filter.addTarget(renderView)
+       
 
                          
                      } else {
                          
-                         if (selected.name == "rcam01" || selected.name == "rcam02" || selected.name == "rcam03") {
-                             selected.addTarget(self.haze)
-                             self.haze.addTarget(renderView)
-                         } else {
+
                               selected.addTarget(renderView)
-                         }
+        
                          
                      }
                      
@@ -254,24 +242,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             loadedImageSource.addTarget(selected)
             
             
-            if (twisterSwitch.isOn) {
-                selected.addTarget(self.twister)
+            if (FX1isOn) {
+                selected.addTarget(self.F1!.filter)
                 
-                if (convolutSwitch.isOn) {
+                if (FX2isOn) {
                     
-                    self.twister.addTarget(self.convolut)
-                    self.convolut.addTarget(renderView)
+                    self.F1!.filter.addTarget(self.F2!.filter)
+                    self.F2!.filter.addTarget(renderView)
                     
                 } else {
                     
-                    if (selected.name == "rcam01" || selected.name == "rcam02" || selected.name == "rcam03") {
-                        
-                          self.twister.addTarget(self.haze)
-                        self.haze.addTarget(renderView)
-                        
-                    } else {
-                        self.twister.addTarget(renderView)
-                    }
+
+                        self.F1!.filter.addTarget(renderView)
+            
                     
                 }
                 
@@ -279,28 +262,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             } else {
                 
                 
-                if (convolutSwitch.isOn) {
-                    if (selected.name == "rcam01" || selected.name == "rcam02" || selected.name == "rcam03") {
-                        
-                        selected.addTarget(self.convolut)
-                        self.convolut.addTarget(haze)
-                        self.haze.addTarget(renderView)
-                        
-                    } else {
-                        selected.addTarget(self.convolut)
-                        self.convolut.addTarget(renderView)
-                    }
+                if (FX2isOn) {
 
+                        selected.addTarget(self.F2!.filter)
+                        self.F2!.filter.addTarget(renderView)
+       
                     
                 } else {
                     
-                    if (selected.name == "rcam01" || selected.name == "rcam02" || selected.name == "rcam03") {
-                        selected.addTarget(self.haze)
-                        self.haze.addTarget(renderView)
-                    } else {
                          selected.addTarget(renderView)
-                    }
-                    
+
+            
                 }
                 
                
@@ -469,7 +441,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         }
     }
     
-
+    @IBAction func fx1SldierValueDidChange(_ sender: Any) {
+        
+    
+    }
+    
+    @IBAction func fx2SliderValueDidChange(_ sender: Any) {
+        
+        
+    }
+    
+    
     @IBAction func mainSliderValueChanged(_ sender: Any) {
         guard let slider = sender as? UISlider else { return }
         filters[selectedIndex].filterIntensity = slider.value
@@ -489,14 +471,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             
         }
         
-        if (twisterSwitch.isOn) {
+        
+//        let filter1: BasicOperation = self.F1?.filter ?? nil
+//        let filter2: BasicOperation = self.F2?.filter ?? nil
+        
+        if (FX1isOn) {
             
-            if (convolutSwitch.isOn) {
+            if (FX2isOn) {
 
-                    filters[selectedIndex] --> self.twister --> self.convolut --> pictureOutput
+                filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> (self.F2!.filter as! BasicOperation) --> pictureOutput
                 
             } else {
-                filters[selectedIndex] -->  self.haze -->  twister --> pictureOutput
+                filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> pictureOutput
             }
             
             
@@ -504,14 +490,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             
             
             
-            if (convolutSwitch.isOn) {
+            if (FX2isOn) {
                 
                 
-                    filters[selectedIndex] --> self.convolut -->  pictureOutput
+                filters[selectedIndex] --> (self.F2!.filter as! BasicOperation) -->  pictureOutput
                 
                 
             } else {
-                filters[selectedIndex] --> self.haze --> pictureOutput
+                filters[selectedIndex] -->  pictureOutput
                 
             }
             
@@ -568,14 +554,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                             
                             
                             
-                            if (twisterSwitch.isOn) {
+                            if (FX1isOn) {
                                 
-                                if (convolutSwitch.isOn) {
+                                if (FX2isOn) {
 
-                                        filters[selectedIndex] --> self.twister --> self.convolut --> movieOutput!
+                                        filters[selectedIndex] --> (self.F1!.filter as! BasicOperation)  --> (self.F2!.filter as! BasicOperation) --> movieOutput!
                                     
                                 } else {
-                                    filters[selectedIndex] --> self.twister --> movieOutput!
+                                    filters[selectedIndex] --> (self.F1!.filter as! BasicOperation)  --> movieOutput!
                                 }
                                 
                                 
@@ -583,10 +569,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                                 
                                 
                                 
-                                if (convolutSwitch.isOn) {
+                                if (FX2isOn) {
                                     
                                     
-                                        filters[selectedIndex] --> self.convolut -->  movieOutput!
+                                        filters[selectedIndex] --> (self.F2!.filter as! BasicOperation)  -->  movieOutput!
                                     
                                     
                                 } else {
@@ -663,22 +649,100 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                 }
     }
     
+    @IBAction func didTapF1(_ sender: Any) {
+   
+        
+        let filterSelectionVC = FilterListViewController.init()
+        filterSelectionVC.isFirstFilter = true;
+        filterSelectionVC.selectionDelegate = self
+        self.present(filterSelectionVC, animated: true) {
+            
+        }
+        
+    }
     
-//        @IBAction func pauseCapture(_ sender: AnyObject) {
-//            if (isRecording) {
-//                movieOutput?.finishRecording{
-//                    self.isRecording = false
-//                    DispatchQueue.main.async {
-//                        (sender as! UIButton).tintColor = UIColor.systemYellow
-//                    }
-//    //                self.camera.audioEncodingTarget = nil
-//                    self.movieOutput = nil
-//                }
-//            }
-//        }
+    
+    @IBAction func didTapF2(_ sender: Any) {
+    
 
-
+        let filterSelectionVC = FilterListViewController.init()
+        filterSelectionVC.isFirstFilter = false;
+        filterSelectionVC.selectionDelegate = self
+        self.present(filterSelectionVC, animated: true) {
+            
+        }
+        
+        
+    }
+    
+    
+    func didSelectFilter1(_ filter: FilterOperationInterface) {
+        
+        camera.stopCapture()
+        camera.removeAllTargets()
+        filters[selectedIndex].removeAllTargets()
+         self.haze.removeAllTargets()
+        self.F1?.filter.removeAllTargets()
+        self.F2?.filter.removeAllTargets()
+        
+        
+        if (filter.titleName == "None") {
+            fiButton.titleLabel?.text = "Select FX1"
+            FX1isOn = false
+            didToggleFX()
+            return
+        }
+        
+        FX1isOn = true
+        F1 = filter
+        fiButton.titleLabel?.text = filter.titleName
+        
+        didToggleFX()
+        
+        
+    }
+    func didSelectFilter2(_ filter: FilterOperationInterface) {
+        
+        
+           camera.stopCapture()
+           camera.removeAllTargets()
+           filters[selectedIndex].removeAllTargets()
+            self.haze.removeAllTargets()
+           self.F1?.filter.removeAllTargets()
+           self.F2?.filter.removeAllTargets()
+        
+        if (filter.titleName == "None") {
+            f2Button.titleLabel?.text = "Select FX2"
+            FX2isOn = false
+            didToggleFX()
+            return
+        }
+        
+        FX2isOn = true
+        F2 = filter
+        f2Button.titleLabel?.text = filter.titleName
+        didToggleFX()
+    }
 
     
 }
 
+@IBDesignable open class DesignableSlider: UISlider {
+
+    @IBInspectable var trackHeight: CGFloat = 5
+
+    @IBInspectable var roundImage: UIImage? {
+        didSet{
+            setThumbImage(roundImage, for: .normal)
+        }
+    }
+    @IBInspectable var roundHighlightedImage: UIImage? {
+        didSet{
+            setThumbImage(roundHighlightedImage, for: .highlighted)
+        }
+    }
+    override open func trackRect(forBounds bounds: CGRect) -> CGRect {
+        //set your bounds here
+        return CGRect(origin: bounds.origin, size: CGSize(width: bounds.width, height: trackHeight))
+    }
+}

@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		7A62BC3DBB13140CB8ECF613 /* Pods_RealityCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C46C12A51CA75C559FA628 /* Pods_RealityCam.framework */; };
+		F10A59E924982BBC008C729B /* FilterOperationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10A59E424982BBB008C729B /* FilterOperationTypes.swift */; };
+		F10A59EA24982BBC008C729B /* FilterDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10A59E524982BBB008C729B /* FilterDisplayViewController.swift */; };
+		F10A59EB24982BBC008C729B /* FilterOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10A59E624982BBB008C729B /* FilterOperations.swift */; };
+		F10A59EC24982BBC008C729B /* FilterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10A59E724982BBB008C729B /* FilterListViewController.swift */; };
+		F10A59F224983B9A008C729B /* lookup_soft_elegance_2.png in Resources */ = {isa = PBXBuildFile; fileRef = F10A59ED24983B99008C729B /* lookup_soft_elegance_2.png */; };
+		F10A59F324983B9A008C729B /* lookup.png in Resources */ = {isa = PBXBuildFile; fileRef = F10A59EE24983B99008C729B /* lookup.png */; };
+		F10A59F424983B9A008C729B /* lookup_amatorka.png in Resources */ = {isa = PBXBuildFile; fileRef = F10A59EF24983B9A008C729B /* lookup_amatorka.png */; };
+		F10A59F524983B9A008C729B /* lookup_soft_elegance_1.png in Resources */ = {isa = PBXBuildFile; fileRef = F10A59F024983B9A008C729B /* lookup_soft_elegance_1.png */; };
+		F10A59F624983B9A008C729B /* lookup_miss_etikate.png in Resources */ = {isa = PBXBuildFile; fileRef = F10A59F124983B9A008C729B /* lookup_miss_etikate.png */; };
 		F128DA8A24884BF60056695B /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = F128DA8724884BE60056695B /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1769C682487F4C0001566E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1769C672487F4C0001566E8 /* AppDelegate.swift */; };
 		F1769C6A2487F4C0001566E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1769C692487F4C0001566E8 /* SceneDelegate.swift */; };
@@ -58,6 +67,15 @@
 		A5D50631023879BD7240037B /* Pods-RealityCam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealityCam.debug.xcconfig"; path = "Target Support Files/Pods-RealityCam/Pods-RealityCam.debug.xcconfig"; sourceTree = "<group>"; };
 		C00A5BE9FF25AAE6656BEE77 /* Pods-RealityCam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealityCam.release.xcconfig"; path = "Target Support Files/Pods-RealityCam/Pods-RealityCam.release.xcconfig"; sourceTree = "<group>"; };
 		D1C46C12A51CA75C559FA628 /* Pods_RealityCam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealityCam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F10A59E424982BBB008C729B /* FilterOperationTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOperationTypes.swift; sourceTree = "<group>"; };
+		F10A59E524982BBB008C729B /* FilterDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterDisplayViewController.swift; sourceTree = "<group>"; };
+		F10A59E624982BBB008C729B /* FilterOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterOperations.swift; sourceTree = "<group>"; };
+		F10A59E724982BBB008C729B /* FilterListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterListViewController.swift; sourceTree = "<group>"; };
+		F10A59ED24983B99008C729B /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_soft_elegance_2.png; sourceTree = "<group>"; };
+		F10A59EE24983B99008C729B /* lookup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup.png; sourceTree = "<group>"; };
+		F10A59EF24983B9A008C729B /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_amatorka.png; sourceTree = "<group>"; };
+		F10A59F024983B9A008C729B /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_soft_elegance_1.png; sourceTree = "<group>"; };
+		F10A59F124983B9A008C729B /* lookup_miss_etikate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_miss_etikate.png; sourceTree = "<group>"; };
 		F128D9AA24884BE50056695B /* rcam01.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = rcam01.metal; sourceTree = "<group>"; };
 		F128D9AC24884BE50056695B /* PictureInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInput.swift; sourceTree = "<group>"; };
 		F128D9AD24884BE50056695B /* TextureSamplingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextureSamplingOperation.swift; sourceTree = "<group>"; };
@@ -300,6 +318,17 @@
 				C00A5BE9FF25AAE6656BEE77 /* Pods-RealityCam.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F10A59E324982BBB008C729B /* FilterSelection */ = {
+			isa = PBXGroup;
+			children = (
+				F10A59E424982BBB008C729B /* FilterOperationTypes.swift */,
+				F10A59E524982BBB008C729B /* FilterDisplayViewController.swift */,
+				F10A59E624982BBB008C729B /* FilterOperations.swift */,
+				F10A59E724982BBB008C729B /* FilterListViewController.swift */,
+			);
+			path = FilterSelection;
 			sourceTree = "<group>";
 		};
 		F128D9A924884BE50056695B /* gpuimage3 */ = {
@@ -576,6 +605,12 @@
 		F1769C662487F4C0001566E8 /* RealityCam */ = {
 			isa = PBXGroup;
 			children = (
+				F10A59EF24983B9A008C729B /* lookup_amatorka.png */,
+				F10A59F124983B9A008C729B /* lookup_miss_etikate.png */,
+				F10A59F024983B9A008C729B /* lookup_soft_elegance_1.png */,
+				F10A59ED24983B99008C729B /* lookup_soft_elegance_2.png */,
+				F10A59EE24983B99008C729B /* lookup.png */,
+				F10A59E324982BBB008C729B /* FilterSelection */,
 				F128D9A924884BE50056695B /* gpuimage3 */,
 				F1769C672487F4C0001566E8 /* AppDelegate.swift */,
 				F1769C692487F4C0001566E8 /* SceneDelegate.swift */,
@@ -682,8 +717,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F10A59F524983B9A008C729B /* lookup_soft_elegance_1.png in Resources */,
 				F1769C742487F4C3001566E8 /* LaunchScreen.storyboard in Resources */,
 				F1769C712487F4C3001566E8 /* Assets.xcassets in Resources */,
+				F10A59F324983B9A008C729B /* lookup.png in Resources */,
+				F10A59F424983B9A008C729B /* lookup_amatorka.png in Resources */,
+				F10A59F624983B9A008C729B /* lookup_miss_etikate.png in Resources */,
+				F10A59F224983B9A008C729B /* lookup_soft_elegance_2.png in Resources */,
 				F1769C6F2487F4C0001566E8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -737,7 +777,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F10A59EC24982BBC008C729B /* FilterListViewController.swift in Sources */,
 				F1769C6C2487F4C0001566E8 /* ViewController.swift in Sources */,
+				F10A59EA24982BBC008C729B /* FilterDisplayViewController.swift in Sources */,
+				F10A59E924982BBC008C729B /* FilterOperationTypes.swift in Sources */,
+				F10A59EB24982BBC008C729B /* FilterOperations.swift in Sources */,
 				F1769C682487F4C0001566E8 /* AppDelegate.swift in Sources */,
 				F1769C6A2487F4C0001566E8 /* SceneDelegate.swift in Sources */,
 			);
@@ -891,10 +935,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5D50631023879BD7240037B /* Pods-RealityCam.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 43R88X5B35;
 				INFOPLIST_FILE = RealityCam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -913,10 +957,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C00A5BE9FF25AAE6656BEE77 /* Pods-RealityCam.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-4";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 43R88X5B35;
 				INFOPLIST_FILE = RealityCam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
