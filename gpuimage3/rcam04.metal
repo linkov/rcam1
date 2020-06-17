@@ -235,16 +235,16 @@ fragment half4 rcam04Fragment(SingleInputVertexIO fragmentInput [[stage_in]],
     
     
     
-//    half4 white = half4(1.0);
-//    half d = fragmentInput.textureCoordinate.y * 0.0 + 0.2;
-//    
-//    half4 color = inputTexture.sample(quadSampler, float2(tra.xy));
-//    color = (color - d * white) / (1.0 - d);
+    half4 white = half4(1.0);
+    half d = fragmentInput.textureCoordinate.y * 0.0 + 0.2;
+    
+    half4 color = inputTexture.sample(quadSampler, float2(tra.xy));
+    color = (color - d * white) / (1.0 - d);
     
     
     
     
-    return inputTexture.sample(quadSampler, float2(tra.xy) );
+    return inputTexture.sample(quadSampler,float2(tra.xy) );
 
     //return half4( tra );
 

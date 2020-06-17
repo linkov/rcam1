@@ -18,6 +18,10 @@ public class RCamFilter: BasicOperation {
         ({time = 0.0; filterIntensity = 0.000; audioLevel = 0.0; filterVariation = 1.0})()
     }
     
+    public func targetsCount() -> Int {
+        return self.targets.count
+    }
+    
    override func internalRenderFunction(commandBuffer: MTLCommandBuffer, outputTexture: Texture) {
     time += 0.1
     super.internalRenderFunction(commandBuffer: commandBuffer, outputTexture: outputTexture)

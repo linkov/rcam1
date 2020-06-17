@@ -117,14 +117,34 @@
                                     <action selector="mainSliderValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eE1-DP-fNN"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nh2-DS-7Wk">
+                                <rect key="frame" x="34" y="184" width="94" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <size key="titleShadowOffset" width="1" height="-3"/>
+                                <state key="normal" title="Select FX3">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapF3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="71y-zW-ST5"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZDC-9r-cbf">
+                                <rect key="frame" x="34" y="239" width="118" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="MJv-rc-wK5"/>
+                                </constraints>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="d7w-Cp-McL" secondAttribute="bottom" id="0Fw-yd-ClZ"/>
+                            <constraint firstItem="ZDC-9r-cbf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="36" id="51P-5L-Gop"/>
                             <constraint firstItem="Gu1-AY-5Sx" firstAttribute="top" secondItem="SYt-ge-ufR" secondAttribute="bottom" constant="20" id="63C-fO-PH8"/>
                             <constraint firstItem="qYk-hx-1ub" firstAttribute="centerY" secondItem="mhQ-sk-wjL" secondAttribute="centerY" id="87K-qY-stN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qeu-Hv-FsU" secondAttribute="trailing" constant="40" id="8x0-mu-bTw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Qeu-Hv-FsU" secondAttribute="bottom" constant="30" id="9UG-i7-QuO"/>
+                            <constraint firstItem="ZDC-9r-cbf" firstAttribute="top" secondItem="Nh2-DS-7Wk" secondAttribute="bottom" constant="21" id="9iR-cZ-pLC"/>
                             <constraint firstItem="d7w-Cp-McL" firstAttribute="leading" secondItem="HmS-wz-GY7" secondAttribute="trailing" constant="-125" id="AZl-lp-5x4"/>
                             <constraint firstItem="SYt-ge-ufR" firstAttribute="leading" secondItem="d7w-Cp-McL" secondAttribute="trailing" constant="-133" id="DYK-aN-hFo"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mhQ-sk-wjL" secondAttribute="bottom" constant="100" id="Gdf-GB-HqE"/>
@@ -136,14 +156,17 @@
                             <constraint firstItem="Qeu-Hv-FsU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="Zy0-FI-WW9"/>
                             <constraint firstItem="d7w-Cp-McL" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="a1C-3I-I5Q"/>
                             <constraint firstItem="d7w-Cp-McL" firstAttribute="leading" secondItem="qYk-hx-1ub" secondAttribute="trailing" constant="-81" id="e1J-vh-Rmo"/>
+                            <constraint firstItem="Nh2-DS-7Wk" firstAttribute="top" secondItem="Hem-VU-YP2" secondAttribute="bottom" constant="36" id="f96-he-ZYR"/>
                             <constraint firstItem="SYt-ge-ufR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="kqV-hb-Tg5"/>
                             <constraint firstItem="mhQ-sk-wjL" firstAttribute="centerX" secondItem="d7w-Cp-McL" secondAttribute="centerX" id="rK3-63-cvW"/>
+                            <constraint firstItem="Nh2-DS-7Wk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="34" id="svS-gG-Ooi"/>
                             <constraint firstItem="d7w-Cp-McL" firstAttribute="leading" secondItem="Hem-VU-YP2" secondAttribute="trailing" constant="-148" id="ve3-3E-Z4A"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="f2Button" destination="SYt-ge-ufR" id="nZp-rF-Ffx"/>
+                        <outlet property="f3Button" destination="Nh2-DS-7Wk" id="vyQ-aC-DZh"/>
                         <outlet property="fiButton" destination="HmS-wz-GY7" id="o7B-et-kcy"/>
                         <outlet property="fx1Slider" destination="Hem-VU-YP2" id="IWh-ke-qvT"/>
                         <outlet property="fx2Sldier" destination="Gu1-AY-5Sx" id="Ey4-oh-TQH"/>

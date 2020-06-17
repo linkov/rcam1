@@ -14,6 +14,7 @@ import JGProgressHUD
 protocol FilterSelectionDelegate {
     func didSelectFilter1(_ filter: FilterOperationInterface)
     func didSelectFilter2(_ filter: FilterOperationInterface)
+    func didSelectFilter3(_ filter: FilterOperationInterface)
 }
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate & FilterSelectionDelegate {
@@ -25,12 +26,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     @IBOutlet weak var fiButton: UIButton!
     @IBOutlet weak var f2Button: UIButton!
+    @IBOutlet weak var f3Button: UIButton!
+
     
     var F1: FilterOperationInterface?
     var F2: FilterOperationInterface?
     
+    var F3: FilterOperationInterface?
+    
     var FX1isOn = false;
     var FX2isOn = false;
+    
+    var FX3isOn = false;
     
     var mic: AKMicrophone!
     var tracker: AKAmplitudeTracker!
@@ -149,38 +156,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
 
         updateActiveFilter(selected: filters[selectedIndex])
     }
-//    @IBAction func didToggleFlash(_ sender: Any) {
-//
-//           camera.stopCapture()
-//           camera.removeAllTargets()
-//           filters[selectedIndex].removeAllTargets()
-//            self.haze.removeAllTargets()
-//           self.F1?.filter.removeAllTargets()
-//           self.F2?.filter.removeAllTargets()
-//        updateActiveFilter(selected: filters[selectedIndex])
-//
-//    }
-//
-//    @IBAction func didToggleTwister(_ sender: Any) {
-//
-//
-//
-//           camera.stopCapture()
-//           camera.removeAllTargets()
-//           filters[selectedIndex].removeAllTargets()
-//            self.haze.removeAllTargets()
-//           self.F1?.filter.removeAllTargets()
-//           self.F2?.filter.removeAllTargets()
-//        updateActiveFilter(selected: filters[selectedIndex])
-//    }
 
     func updateActiveFilter(selected: RCamFilter) {
        
         
         selected.time = 0.0
         
-        
-        if (loadedImageSource == nil) {
             
 
                  do {
@@ -196,92 +177,86 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
 
 
-                 
+
                  if (FX1isOn) {
                      selected.addTarget(self.F1!.filter)
-                     
-                     if (FX2isOn) {
-                         
-                         self.F1?.filter.addTarget(self.F2!.filter)
-                         self.F2?.filter.addTarget(renderView)
-                         
-                     } else {
-                         
 
-                             self.F1?.filter.addTarget(renderView)
-         
-                         
+                     if (FX2isOn) {
+                        
+                        if (FX3isOn) {
+                            self.F1?.filter.addTarget(self.F2!.filter)
+                            self.F2?.filter.addTarget(self.F3!.filter)
+                            self.F3?.filter.addTarget(renderView)
+                            
+                            
+                        } else {
+                            self.F1?.filter.addTarget(self.F2!.filter)
+                            self.F2?.filter.addTarget(renderView)
+                        }
+
+
+
+                     } else {
+
+                         if (FX3isOn) {
+                            
+                            self.F1?.filter.addTarget(self.F3!.filter)
+                            self.F3!.filter.addTarget(renderView)
+                         } else {
+                            self.F1?.filter.addTarget(renderView)
+                        }
+                             
+
+
                      }
-                     
-                     
+
+
                  } else {
-                     
-                     
+
+
                      if (FX2isOn) {
+                        
+                        if (FX3isOn) {
+                            
+                            selected.addTarget(self.F2!.filter)
+                            self.F2!.filter.addTarget(self.F3!.filter)
+                            self.F3?.filter.addTarget(renderView)
+                            
+                        } else {
+                            selected.addTarget(self.F2!.filter)
+                            self.F2!.filter.addTarget(renderView)
+                        }
 
-                             selected.addTarget(self.F2!.filter)
-                             self.F2!.filter.addTarget(renderView)
-       
 
-                         
+
+
+
                      } else {
-                         
 
-                              selected.addTarget(renderView)
-        
-                         
+
+                             
+
+
                      }
-                     
-                    
+
+
                  }
 
+        
+        if (FX3isOn) {
             
-            
-        } else {
-            
-            loadedImageSource.addTarget(selected)
-            
-            
-            if (FX1isOn) {
-                selected.addTarget(self.F1!.filter)
-                
-                if (FX2isOn) {
-                    
-                    self.F1!.filter.addTarget(self.F2!.filter)
-                    self.F2!.filter.addTarget(renderView)
-                    
-                } else {
-                    
-
-                        self.F1!.filter.addTarget(renderView)
-            
-                    
-                }
-                
-                
-            } else {
-                
-                
-                if (FX2isOn) {
-
-                        selected.addTarget(self.F2!.filter)
-                        self.F2!.filter.addTarget(renderView)
-       
-                    
-                } else {
-                    
-                         selected.addTarget(renderView)
-
-            
-                }
-                
-               
-            }
-            
-
-            loadedImageSource.processImage()
+            selected.addTarget(self.F3!.filter)
+            self.F3!.filter.addTarget(renderView)
         }
 
+            
+            
+
+
+        
+        if (!FX1isOn && !FX2isOn && !FX3isOn) {
+             selected.addTarget(renderView)
+        }
         
       
         
@@ -399,9 +374,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         filters[selectedIndex].audioLevel = Float(0.0)
         }
         
-        if (loadedImageSource != nil) {
-            loadedImageSource.processImage()
-        }
+
     }
     
     @IBAction func fx1SldierValueDidChange(_ sender: Any) {
@@ -418,9 +391,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBAction func mainSliderValueChanged(_ sender: Any) {
         guard let slider = sender as? UISlider else { return }
         filters[selectedIndex].filterIntensity = slider.value
-        if (loadedImageSource != nil) {
-            loadedImageSource.processImage()
-        }
+
     }
     
     
@@ -438,11 +409,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         if (FX1isOn) {
             
             if (FX2isOn) {
+                
+                if (FX3isOn) {
+                    filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> (self.F2!.filter as! BasicOperation)  --> (self.F3!.filter as! BasicOperation) --> pictureOutput
+                    
+                } else {
+                    filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> (self.F2!.filter as! BasicOperation) --> pictureOutput
+                }
 
-                filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> (self.F2!.filter as! BasicOperation) --> pictureOutput
+                
                 
             } else {
-                filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> pictureOutput
+                
+                if (FX3isOn) {
+                    filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) -->  (self.F3!.filter as! BasicOperation) --> pictureOutput
+                } else {
+                    filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> pictureOutput
+                }
+                
+                
             }
             
             
@@ -452,12 +437,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             
             if (FX2isOn) {
                 
+                if (FX3isOn) {
+                         filters[selectedIndex] --> (self.F2!.filter as! BasicOperation) --> (self.F3!.filter as! BasicOperation) -->  pictureOutput
+                } else {
+                         filters[selectedIndex] --> (self.F2!.filter as! BasicOperation) -->  pictureOutput
+                }
                 
-                filters[selectedIndex] --> (self.F2!.filter as! BasicOperation) -->  pictureOutput
+                
+           
                 
                 
             } else {
-                filters[selectedIndex] -->  pictureOutput
+                
+                if (FX3isOn) {
+                    filters[selectedIndex] --> (self.F3!.filter as! BasicOperation) -->   pictureOutput
+                } else {
+                    filters[selectedIndex] -->  pictureOutput
+                }
+                
+                
                 
             }
             
@@ -500,28 +498,30 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                             }
 
                             movieOutput = try MovieOutput(URL:fileURL, size:Size(width:Float(camera.inputCamera.activeFormat.formatDescription.dimensions.width), height:Float(camera.inputCamera.activeFormat.formatDescription.dimensions.height)), liveVideo:true)
-            //                camera.audioEncodingTarget = movieOutput
-                            
-                            
-                            
-                            
-                            
-        //                    filters[selectedIndex] --> movieOutput!
-        //
-                            
-                            
-                            
-                            
-                            
+
                             
                             if (FX1isOn) {
                                 
                                 if (FX2isOn) {
+                                    
+                                    if (FX3isOn) {
+                                                                                filters[selectedIndex] --> (self.F1!.filter as! BasicOperation)  --> (self.F2!.filter as! BasicOperation) --> (self.F3!.filter as! BasicOperation) --> movieOutput!
+                                    } else {
+                                                                                filters[selectedIndex] --> (self.F1!.filter as! BasicOperation)  --> (self.F2!.filter as! BasicOperation) --> movieOutput!
+                                    }
 
-                                        filters[selectedIndex] --> (self.F1!.filter as! BasicOperation)  --> (self.F2!.filter as! BasicOperation) --> movieOutput!
+
                                     
                                 } else {
-                                    filters[selectedIndex] --> (self.F1!.filter as! BasicOperation)  --> movieOutput!
+                                    
+                                    
+                                     if (FX3isOn) {
+                                        filters[selectedIndex] --> (self.F1!.filter as! BasicOperation) --> (self.F3!.filter as! BasicOperation)  --> movieOutput!
+                                     } else {
+                                        filters[selectedIndex] --> (self.F1!.filter as! BasicOperation)  --> movieOutput!
+                                    }
+                                    
+                                    
                                 }
                                 
                                 
@@ -531,12 +531,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
                                 
                                 if (FX2isOn) {
                                     
+                                    if (FX3isOn) {
+                                         filters[selectedIndex] --> (self.F2!.filter as! BasicOperation) --> (self.F3!.filter as! BasicOperation)  -->  movieOutput!
+                                    } else {
+                                         filters[selectedIndex] --> (self.F2!.filter as! BasicOperation)  -->  movieOutput!
+                                    }
                                     
-                                        filters[selectedIndex] --> (self.F2!.filter as! BasicOperation)  -->  movieOutput!
+                                       
                                     
                                     
                                 } else {
-                                        filters[selectedIndex] --> movieOutput!
+                                    
+                                    if (FX3isOn) {
+                                         filters[selectedIndex] --> (self.F3!.filter as! BasicOperation)  -->  movieOutput!
+                                    } else {
+                                         filters[selectedIndex] --> movieOutput!
+                                    }
+                                       
                                     
                                 }
                                 
@@ -635,6 +646,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
     }
     
+    @IBAction func didTapF3(_ sender: Any) {
+    
+        
+        let filterSelectionVC = FilterListViewController.init()
+        filterSelectionVC.isFirstFilter = false;
+        filterSelectionVC.isF3 = true;
+        filterSelectionVC.selectionDelegate = self
+        self.present(filterSelectionVC, animated: true) {
+            
+        }
+        
+    }
+    
+    
+    @IBAction func didTapF4(_ sender: Any) {
+        
+        let filterSelectionVC = FilterListViewController.init()
+        filterSelectionVC.isFirstFilter = false;
+                filterSelectionVC.isF3 = false;
+        filterSelectionVC.isF4 = true;
+        filterSelectionVC.selectionDelegate = self
+        self.present(filterSelectionVC, animated: true) {
+            
+        }
+        
+    }
+    
+    
     
     func didSelectFilter1(_ filter: FilterOperationInterface) {
         
@@ -645,6 +684,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         self.F1?.filter.removeAllTargets()
         self.F2?.filter.removeAllTargets()
         
+        self.F3?.filter.removeAllTargets()
         
         if (filter.titleName == "None") {
             fiButton.titleLabel?.text = "Select FX1"
@@ -681,6 +721,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             self.haze.removeAllTargets()
            self.F1?.filter.removeAllTargets()
            self.F2?.filter.removeAllTargets()
+          self.F3?.filter.removeAllTargets()
         
         if (filter.titleName == "None") {
             f2Button.titleLabel?.text = "Select FX2"
@@ -707,7 +748,49 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         f2Button.titleLabel?.text = filter.titleName
         didToggleFX()
     }
+    
+    func didSelectFilter3(_ filter: FilterOperationInterface) {
+           
+        
+           camera.stopCapture()
+           camera.removeAllTargets()
+           filters[selectedIndex].removeAllTargets()
+            self.haze.removeAllTargets()
+           self.F1?.filter.removeAllTargets()
+           self.F2?.filter.removeAllTargets()
+            self.F3?.filter.removeAllTargets()
+        
+        if (filter.titleName == "None") {
+            f3Button.titleLabel?.text = "Select FX3"
+            FX3isOn = false
+            didToggleFX()
+            return
+        }
+        
+        if (filter.titleName == "3x3")  {
+            switch filter.filterOperationType {
+                           case .singleInput:
+                return
+                           case .blend:
+                return
+                           case let .custom(filterSetupFunction:setupFunction):
+                            filter.configureCustomFilter(setupFunction(camera,filter.filter,renderView))
+                           }
+        }
+        
 
+        
+        FX3isOn = true
+        F3 = filter
+        f3Button.titleLabel?.text = filter.titleName
+        didToggleFX()
+        
+    }
+    
+
+    
+
+    
     
 }
 

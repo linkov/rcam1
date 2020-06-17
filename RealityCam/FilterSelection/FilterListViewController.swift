@@ -5,6 +5,8 @@ class FilterListViewController: UITableViewController {
     
     var selectionDelegate: FilterSelectionDelegate?
     var isFirstFilter = false;
+    var isF3 = false;
+    var isF4 = false;
     var filterDisplayViewController: FilterDisplayViewController? = nil
     var objects = NSMutableArray()
     var cellId = "Cell"
@@ -47,7 +49,15 @@ class FilterListViewController: UITableViewController {
                 selectionDelegate?.didSelectFilter1(filterInList)
 
             } else {
-                selectionDelegate?.didSelectFilter2(filterInList)
+                
+                
+                if (isF3) {
+                    selectionDelegate?.didSelectFilter3(filterInList)
+                } else {
+                    selectionDelegate?.didSelectFilter2(filterInList)
+                }
+                
+                
             }
             
             
