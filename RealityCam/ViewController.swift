@@ -392,44 +392,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     @objc func updateUI() {
        if tracker.amplitude > 0.001 {
-        //let trackerFrequency = Float(tracker.frequency )
-           
 
-//            guard trackerFrequency < 7_000 else {
-//                // This is a bit of hack because of modern Macbooks giving super high frequencies
-//                return
-//            }
-////
-//            var frequency = trackerFrequency
-//                   while frequency > Float(noteFrequencies[noteFrequencies.count - 1]) {
-//                       frequency /= 2.0
-//                   }
-//                   while frequency < Float(noteFrequencies[0]) {
-//                       frequency *= 2.0
-//                   }
-//
-//                   var minDistance: Float = 10_000.0
-//                   var index = 0
-//
-//                   for i in 0..<noteFrequencies.count {
-//                       let distance = fabsf(Float(noteFrequencies[i]) - frequency)
-//                       if distance < minDistance {
-//                           index = i
-//                           minDistance = distance
-//                       }
-//                   }
-//                   let octave = Int(log2f(trackerFrequency / frequency))
-//
-//        let trackerFrequency = Float(tracker.frequency)
-//        var frequency = trackerFrequency
-//                   while frequency > Float(noteFrequencies[noteFrequencies.count - 1]) {
-//                       frequency /= 2.0
-//                   }
-//                   while frequency < Float(noteFrequencies[0]) {
-//                       frequency *= 2.0
-//                   }
-//
-//        print(frequency)
         filters[selectedIndex].audioLevel = Float(tracker.amplitude * 2.0 )
 
        } else {
@@ -471,9 +434,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
             
         }
         
-        
-//        let filter1: BasicOperation = self.F1?.filter ?? nil
-//        let filter2: BasicOperation = self.F2?.filter ?? nil
         
         if (FX1isOn) {
             

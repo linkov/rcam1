@@ -82,17 +82,17 @@ fragment half4 rcam01Fragment(SingleInputVertexIO fragmentInput [[stage_in]],
         // end code //
      //   constexpr sampler quadSampler;
 
-    // --- BEGIN Haze it --- //
-    
-    half4 white = half4(1.0);
-    half d = fragmentInput.textureCoordinate.y * 0.0 + 0.2;
-    
-    half4 color = inputTexture.sample(quadSampler, colour.xy);
-    color = (color - d * white) / (1.0 - d);
-    
-    // --- END Haze it --- //
-    
-    return inputTexture.sample(quadSampler, float2(color.xy));
+//    // --- BEGIN Haze it --- //
+//
+//    half4 white = half4(1.0);
+//    half d = fragmentInput.textureCoordinate.y * 0.0 + 0.2;
+//
+//    half4 color = inputTexture.sample(quadSampler, colour.xy);
+//    color = (color - d * white) / (1.0 - d);
+//
+//    // --- END Haze it --- //
+//
+    return inputTexture.sample(quadSampler, float2(colour.xy));
         
      //   return half4(half3(colour), 1.0) * color;
     
