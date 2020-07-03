@@ -19,6 +19,12 @@ protocol FilterSelectionDelegate {
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate & FilterSelectionDelegate {
     
+    
+    var oscillator = AKOscillator()
+    var oscillator2 = AKOscillator()
+    
+    
+    
     @IBOutlet weak var videoButton: UIButton!
 
     @IBOutlet weak var fx1Slider: UISlider!
@@ -351,7 +357,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        AudioKit.output = silence
+        AudioKit.output = AKMixer(oscillator, oscillator2)
         do {
             try AudioKit.start()
         } catch {
@@ -394,74 +400,77 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
 
     }
     
-    
+    @IBAction func toggleSound(sender: UIButton) {
+
+    }
     // Image save
     @IBAction func photoSaveDidTap(_ sender: Any) {
+        
         
         self.photoButton.isEnabled = false
         pictureOutput.encodedImageFormat = .png
         pictureOutput.imageAvailableCallback = {image in
             self.saveImage(image: image)
-            
+
         }
-        
-        
+
+
         if (FX1isOn) {
-            
+
             if (FX2isOn) {
-                
+
                 if (FX3isOn) {
                     filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> (self.F2!.filter as! BasicOperation)  --> (self.F3!.filter as! BasicOperation) --> pictureOutput
-                    
+
                 } else {
                     filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> (self.F2!.filter as! BasicOperation) --> pictureOutput
                 }
 
-                
-                
+
+
             } else {
-                
+
                 if (FX3isOn) {
                     filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) -->  (self.F3!.filter as! BasicOperation) --> pictureOutput
                 } else {
                     filters[selectedIndex] -->  (self.F1!.filter as! BasicOperation) --> pictureOutput
                 }
-                
-                
+
+
             }
-            
-            
+
+
         } else {
-            
-            
-            
+
+
+
             if (FX2isOn) {
-                
+
                 if (FX3isOn) {
                          filters[selectedIndex] --> (self.F2!.filter as! BasicOperation) --> (self.F3!.filter as! BasicOperation) -->  pictureOutput
                 } else {
                          filters[selectedIndex] --> (self.F2!.filter as! BasicOperation) -->  pictureOutput
                 }
-                
-                
-           
-                
-                
+
+
+
+
+
             } else {
-                
+
                 if (FX3isOn) {
                     filters[selectedIndex] --> (self.F3!.filter as! BasicOperation) -->   pictureOutput
                 } else {
                     filters[selectedIndex] -->  pictureOutput
                 }
-                
-                
-                
+
+
+
             }
-            
-             
+
+
         }
-       
+
         
     }
     
