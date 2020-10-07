@@ -8,7 +8,6 @@
 
 import UIKit
 import GPUImage
-import AudioKit
 import JGProgressHUD
 
 protocol FilterSelectionDelegate {
@@ -20,15 +19,14 @@ protocol FilterSelectionDelegate {
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate & FilterSelectionDelegate {
     
     
-    var oscillator = AKOscillator()
-    var oscillator2 = AKOscillator()
+//    var oscillator = AKOscillator()
+//    var oscillator2 = AKOscillator()
+//
     
-    
+    @IBOutlet weak var audioLevelSlider: UISlider!
     
     @IBOutlet weak var videoButton: UIButton!
 
-    @IBOutlet weak var fx1Slider: UISlider!
-    @IBOutlet weak var fx2Sldier: UISlider!
     
     @IBOutlet weak var fiButton: UIButton!
     @IBOutlet weak var f2Button: UIButton!
@@ -45,10 +43,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     var FX3isOn = false;
     
-    var mic: AKMicrophone!
-    var tracker: AKAmplitudeTracker!
-    var silence: AKBooster!
-    var micBooster: AKBooster!
+//    var mic: AKMicrophone!
+//    var tracker: AKAmplitudeTracker!
+//    var silence: AKBooster!
+//    var micBooster: AKBooster!
 
     var loadedImageSource: PictureInput!
     
@@ -109,7 +107,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         self.photoButton.layer.cornerRadius = 14
 //        self.photoButton.layer.masksToBounds = true
         
-        filters = [RCam05(), RCam06(),RCam01(),RCam02(), RCam03(), RCam04()]
+        filters = [ RCam04(),RCam044(),  RCam05() ]
         convolut.convolutionKernel = Matrix3x3(rowMajorValues:[
         3.0, -2.0, -8.0,
         -2.0, 2.1, 0.0,
@@ -143,13 +141,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         updateActiveFilter(selected: filters[selectedIndex])
        
-        AKSettings.audioInputEnabled = true
-        mic = AKMicrophone()
-        micBooster = AKBooster(mic, gain: 5)
-        tracker = AKAmplitudeTracker(micBooster)
-  
-        
-        silence = AKBooster(tracker, gain: 0)
+//        AKSettings.audioInputEnabled = true
+//        mic = AKMicrophone()
+//        micBooster = AKBooster(mic, gain: 5)
+//        tracker = AKAmplitudeTracker(micBooster)
+//
+//
+//        silence = AKBooster(tracker, gain: 0)
         
         
     }
@@ -357,40 +355,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        AudioKit.output = AKMixer(oscillator, oscillator2)
-        do {
-            try AudioKit.start()
-        } catch {
-            AKLog("AudioKit did not start!")
-        }
-
-        Timer.scheduledTimer(timeInterval: 0.1,
-                             target: self,
-                             selector: #selector(ViewController.updateUI),
-                             userInfo: nil,
-                             repeats: true)
+//        AudioKit.output = AKMixer(oscillator, oscillator2)
+//        do {
+//            try AudioKit.start()
+//        } catch {
+//            AKLog("AudioKit did not start!")
+//        }
+//
+//        Timer.scheduledTimer(timeInterval: 0.1,
+//                             target: self,
+//                             selector: #selector(ViewController.updateUI),
+//                             userInfo: nil,
+//                             repeats: true)
     }
     
-    @objc func updateUI() {
-       if tracker.amplitude > 0.001 {
-
-        filters[selectedIndex].audioLevel = Float(tracker.amplitude * 2.0 )
-
-       } else {
-        filters[selectedIndex].audioLevel = Float(0.0)
-        }
-        
-
-    }
+//    @objc func updateUI() {
+//       if tracker.amplitude > 0.001 {
+//
+//        filters[selectedIndex].audioLevel = Float(tracker.amplitude * 2.0 )
+//
+//       } else {
+//        filters[selectedIndex].audioLevel = Float(0.0)
+//        }
+//
+//
+//    }
     
-    @IBAction func fx1SldierValueDidChange(_ sender: Any) {
+
+    @IBAction func audfioLevelSliderValueDidChange(_ sender: UISlider) {
         
-    
-    }
-    
-    @IBAction func fx2SliderValueDidChange(_ sender: Any) {
-        
-        
+        filters[selectedIndex].audioLevel = Float(sender.value )
     }
     
     

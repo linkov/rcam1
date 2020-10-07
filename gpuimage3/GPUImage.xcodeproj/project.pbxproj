@@ -411,6 +411,10 @@
 		BCFCD46920FCE91800560BC9 /* DissolveBlend.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFCD46420FCE83500560BC9 /* DissolveBlend.swift */; };
 		F128DA8F248946470056695B /* RCam02.swift in Sources */ = {isa = PBXBuildFile; fileRef = F128DA8E248946470056695B /* RCam02.swift */; };
 		F128DA91248946660056695B /* rcam02.metal in Sources */ = {isa = PBXBuildFile; fileRef = F128DA90248946660056695B /* rcam02.metal */; };
+		F18B031B252B4510005C21E9 /* rcam044.metal in Sources */ = {isa = PBXBuildFile; fileRef = F18B0319252B450F005C21E9 /* rcam044.metal */; };
+		F18B031C252B4510005C21E9 /* rcam044.metal in Sources */ = {isa = PBXBuildFile; fileRef = F18B0319252B450F005C21E9 /* rcam044.metal */; };
+		F18B031D252B4510005C21E9 /* RCam044.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B031A252B450F005C21E9 /* RCam044.swift */; };
+		F18B031E252B4510005C21E9 /* RCam044.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B031A252B450F005C21E9 /* RCam044.swift */; };
 		F193E9A4248A9F8D00C870E6 /* rcam04.metal in Sources */ = {isa = PBXBuildFile; fileRef = F193E9A2248A9F8D00C870E6 /* rcam04.metal */; };
 		F193E9A5248A9F8D00C870E6 /* RCam04.swift in Sources */ = {isa = PBXBuildFile; fileRef = F193E9A3248A9F8D00C870E6 /* RCam04.swift */; };
 		F193E9A8248AD83800C870E6 /* rcam05.metal in Sources */ = {isa = PBXBuildFile; fileRef = F193E9A6248AD83800C870E6 /* rcam05.metal */; };
@@ -418,6 +422,10 @@
 		F1A52E88248963CD006175CA /* rcam03.metal in Sources */ = {isa = PBXBuildFile; fileRef = F1A52E86248963CD006175CA /* rcam03.metal */; };
 		F1A52E89248963CD006175CA /* RCam03.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A52E87248963CD006175CA /* RCam03.swift */; };
 		F1A52E9424899A15006175CA /* RCamFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A52E9324899A15006175CA /* RCamFilter.swift */; };
+		F1BEB6EF252B525C008CBA46 /* RCUtils.metal in Sources */ = {isa = PBXBuildFile; fileRef = F1BEB6EE252B525C008CBA46 /* RCUtils.metal */; };
+		F1BEB6F0252B525C008CBA46 /* RCUtils.metal in Sources */ = {isa = PBXBuildFile; fileRef = F1BEB6EE252B525C008CBA46 /* RCUtils.metal */; };
+		F1BEB6F3252B5270008CBA46 /* RCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F1BEB6F2252B5270008CBA46 /* RCUtils.h */; };
+		F1BEB6F4252B5270008CBA46 /* RCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = F1BEB6F2252B5270008CBA46 /* RCUtils.h */; };
 		F1CB1E20249414350086F259 /* rcam06.metal in Sources */ = {isa = PBXBuildFile; fileRef = F1CB1E1E249414350086F259 /* rcam06.metal */; };
 		F1CB1E21249414350086F259 /* RCam06.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB1E1F249414350086F259 /* RCam06.swift */; };
 		F1F3E880248849B20067CCC0 /* RCam01.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F3E87C248849B20067CCC0 /* RCam01.swift */; };
@@ -647,6 +655,8 @@
 		BCFCD46620FCE91200560BC9 /* DissolveBlend.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; name = DissolveBlend.metal; path = Source/Operations/DissolveBlend.metal; sourceTree = "<group>"; };
 		F128DA8E248946470056695B /* RCam02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCam02.swift; sourceTree = "<group>"; };
 		F128DA90248946660056695B /* rcam02.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = rcam02.metal; sourceTree = "<group>"; };
+		F18B0319252B450F005C21E9 /* rcam044.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = rcam044.metal; sourceTree = "<group>"; };
+		F18B031A252B450F005C21E9 /* RCam044.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCam044.swift; sourceTree = "<group>"; };
 		F193E9A2248A9F8D00C870E6 /* rcam04.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = rcam04.metal; sourceTree = "<group>"; };
 		F193E9A3248A9F8D00C870E6 /* RCam04.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCam04.swift; sourceTree = "<group>"; };
 		F193E9A6248AD83800C870E6 /* rcam05.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = rcam05.metal; sourceTree = "<group>"; };
@@ -654,6 +664,8 @@
 		F1A52E86248963CD006175CA /* rcam03.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = rcam03.metal; sourceTree = "<group>"; };
 		F1A52E87248963CD006175CA /* RCam03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCam03.swift; sourceTree = "<group>"; };
 		F1A52E9324899A15006175CA /* RCamFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCamFilter.swift; sourceTree = "<group>"; };
+		F1BEB6EE252B525C008CBA46 /* RCUtils.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = RCUtils.metal; sourceTree = "<group>"; };
+		F1BEB6F2252B5270008CBA46 /* RCUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCUtils.h; sourceTree = "<group>"; };
 		F1CB1E1E249414350086F259 /* rcam06.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = rcam06.metal; sourceTree = "<group>"; };
 		F1CB1E1F249414350086F259 /* RCam06.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCam06.swift; sourceTree = "<group>"; };
 		F1F3E87C248849B20067CCC0 /* RCam01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCam01.swift; sourceTree = "<group>"; };
@@ -794,6 +806,10 @@
 		BCC6AB67210E62C900F9803A /* Image processing */ = {
 			isa = PBXGroup;
 			children = (
+				F18B0319252B450F005C21E9 /* rcam044.metal */,
+				F1BEB6EE252B525C008CBA46 /* RCUtils.metal */,
+				F1BEB6F2252B5270008CBA46 /* RCUtils.h */,
+				F18B031A252B450F005C21E9 /* RCam044.swift */,
 				F1CB1E1E249414350086F259 /* rcam06.metal */,
 				F1CB1E1F249414350086F259 /* RCam06.swift */,
 				F193E9A6248AD83800C870E6 /* rcam05.metal */,
@@ -986,6 +1002,7 @@
 				BCC6AB65210E5FF600F9803A /* TexelSamplingTypes.h in Headers */,
 				BC7BA27B20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */,
 				79CB6E45210A55CB0042F87B /* BlendShaderTypes.h in Headers */,
+				F1BEB6F3252B5270008CBA46 /* RCUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,6 +1013,7 @@
 				BCC6AB66210E5FF600F9803A /* TexelSamplingTypes.h in Headers */,
 				BC7BA27C20F2C5E8006B5F4B /* OperationShaderTypes.h in Headers */,
 				79CB6E46210A55CB0042F87B /* BlendShaderTypes.h in Headers */,
+				F1BEB6F4252B5270008CBA46 /* RCUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,11 +1068,11 @@
 				TargetAttributes = {
 					BCE0BE7B20D6DE610006E120 = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1200;
 					};
 					BCE0BE8B20D6E2B80006E120 = {
 						CreatedOnToolsVersion = 9.3;
-						LastSwiftMigration = 0930;
+						LastSwiftMigration = 1200;
 					};
 				};
 			};
@@ -1099,6 +1117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7954BF5E2214CBD5008402A6 /* PrewittEdgeDetection.swift in Sources */,
+				F18B031B252B4510005C21E9 /* rcam044.metal in Sources */,
 				BC5193B52208F8D400DD18F6 /* Pixellate.metal in Sources */,
 				BCC6AB69210E62EB00F9803A /* Convolution3x3.swift in Sources */,
 				BC7BA28120F599DD006B5F4B /* MonochromeFilter.swift in Sources */,
@@ -1160,6 +1179,7 @@
 				F193E9A9248AD83800C870E6 /* RCam05.swift in Sources */,
 				79CB6E1D210933B30042F87B /* OverlayBlend.metal in Sources */,
 				795ECAA821ED2967000EF927 /* Sketch.swift in Sources */,
+				F1BEB6EF252B525C008CBA46 /* RCUtils.metal in Sources */,
 				795ECABA21EF91FF000EF927 /* Laplacian.swift in Sources */,
 				795ECA7A21E90944000EF927 /* ZoomBlur.swift in Sources */,
 				79CB6E3E210A106B0042F87B /* SubtractBlend.metal in Sources */,
@@ -1228,6 +1248,7 @@
 				7971E0C32357B2E9006F150F /* AdaptiveThreshold.metal in Sources */,
 				793D934A20F69A89008A7A6E /* HueAdjustment.metal in Sources */,
 				7B25C0EC2103D5E9000EC621 /* ColorBlend.metal in Sources */,
+				F18B031D252B4510005C21E9 /* RCam044.swift in Sources */,
 				795ECA8921E91B47000EF927 /* CGAColorspace.metal in Sources */,
 				BC101EC422457E610020D74D /* YUVToRGBConversion.metal in Sources */,
 				795B05D820F270FF00D1E759 /* MetalRendering.swift in Sources */,
@@ -1319,6 +1340,7 @@
 				7954BF5F2214CBD5008402A6 /* PrewittEdgeDetection.swift in Sources */,
 				BCC6AB6A210E62EB00F9803A /* Convolution3x3.swift in Sources */,
 				7957437320FBED7D001EAE0A /* RGBAdjustment.swift in Sources */,
+				F18B031E252B4510005C21E9 /* RCam044.swift in Sources */,
 				79A81CAA210126BB00A3B43A /* HighlightAndShadowTint.metal in Sources */,
 				795ECAC421EF961F000EF927 /* LocalBinaryPattern.metal in Sources */,
 				79CB6DE82108CC4F0042F87B /* DivideBlend.metal in Sources */,
@@ -1392,6 +1414,7 @@
 				79CB6DEE210926300042F87B /* ExclusionBlend.metal in Sources */,
 				7999997E2226EC05007404F2 /* KuwaharaFilter.swift in Sources */,
 				795ECA7821E903F1000EF927 /* ToonFilter.metal in Sources */,
+				F1BEB6F0252B525C008CBA46 /* RCUtils.metal in Sources */,
 				BCFCD46820FCE91200560BC9 /* DissolveBlend.metal in Sources */,
 				BC25F89F22C15D3A00CBBD15 /* SmoothToonFilter.swift in Sources */,
 				79CB6E0C21092E3E0042F87B /* LuminosityBlend.metal in Sources */,
@@ -1450,6 +1473,7 @@
 				79CB6E39210A0EDE0042F87B /* SourceOverBlend.metal in Sources */,
 				79CB6DD32108B3F00042F87B /* ColorDodgeBlend.swift in Sources */,
 				79EB1B6F2125C7670049135E /* LookupFilter.metal in Sources */,
+				F18B031C252B4510005C21E9 /* rcam044.metal in Sources */,
 				795ECA7E21E9095A000EF927 /* ZoomBlur.metal in Sources */,
 				96F24FF022007D6D0042E78D /* MedianFilter.metal in Sources */,
 				795B05D920F270FF00D1E759 /* MetalRendering.swift in Sources */,
@@ -1726,6 +1750,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1753,6 +1778,7 @@
 				PRODUCT_NAME = GPUImage;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

@@ -4,7 +4,6 @@
 target 'RealityCam' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  pod 'AudioKit', '~> 4.0'
   pod 'JGProgressHUD'
   # Pods for RealityCam
 

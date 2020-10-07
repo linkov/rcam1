@@ -15,136 +15,7 @@ struct SingleInputVertexIO
 
 using namespace metal;
 
-
-
-float2 isphere( float4 sph, float3 ro, float3 rd )
-{
-    float3 oc = ro - sph.xyz;
-    
-    float b = dot(oc,rd);
-    float c = dot(oc,oc) - sph.w*sph.w;
-    float h = b*b - c;
-    if( h<0.0 ) return float2(-1.0);
-    h = sqrt( h );
-    return -b + float2(-h,h);
-}
-
-float map( float3 p, float3 c, float4 &resColor , float intesity)
-{
-    float3 z = p;
-    float m = dot(z,z);
-
-    float4 trap = float4(abs(z),m);
-    float dz = 1.0;
-    
-    float rIntense = intesity * 10.0;
-    
-    if (rIntense < 2.0) {
-        rIntense = 2.0;
-    }
-    
-    for( int i=0; i<4; i++ )
-    {
-        dz = rIntense*pow(m,3.5)*dz;
-        
-#if 0
-        float x1 = z.x; float x2 = x1*x1; float x4 = x2*x2;
-        float y1 = z.y; float y2 = y1*y1; float y4 = y2*y2;
-        float z1 = z.z; float z2 = z1*z1; float z4 = z2*z2;
-
-        float k3 = x2 + z2;
-        float k2 = inversesqrt( k3*k3*k3*k3*k3*k3*k3 );
-        float k1 = x4 + y4 + z4 - 6.0*y2*z2 - 6.0*x2*y2 + 2.0*z2*x2;
-        float k4 = x2 - y2 + z2;
-
-        z.x = c.x +  64.0*x1*y1*z1*(x2-z2)*k4*(x4-6.0*x2*z2+z4)*k1*k2;
-        z.y = c.y + -16.0*y2*k3*k4*k4 + k1*k1;
-        z.z = c.z +  -8.0*y1*k4*(x4*x4 - 28.0*x4*x2*z2 + 70.0*x4*z4 - 28.0*x2*z2*z4 + z4*z4)*k1*k2;
-#else
-        
-        float r = length(z);
-        float b = 8.0*acos( clamp(z.y/r, -1.0, 1.0));
-        float a = 8.0*atan2( z.x, z.z );
-        z = c + pow(r,8.0) * float3( sin(b)*sin(a), cos(b), sin(b)*cos(a) );
-#endif
-        
-        trap = min( trap, float4(abs(z),m) );
-
-        m = dot(z,z);
-        if( m > 2.0 )
-            break;
-    }
-
-    resColor = trap;
-
-    return 0.25*log(m)*sqrt(m)/dz;
-}
-
-float intersect( float3 ro, float3 rd, float4 &rescol, float fov, float3 c  , float intensity)
-{
-    float res = -1.0;
-
-    // bounding volume
-    float2 dis = isphere( float4( 0.0, 0.0, 0.0, 1.25 ), ro, rd );
-    if( dis.y<0.0 )
-        return -1.0;
-    dis.x = max( dis.x, 0.0 );
-
-    float4 trap;
-
-    // raymarch
-    float fovfactor = 1.0/sqrt(1.0+fov*fov);
-    float t = dis.x;
-    for( int i=0; i<128; i++  )
-    {
-        float3 p = ro + rd*t;
-
-        float surface = clamp( 0.0015*t*fovfactor, 0.0001, 0.1 );
-
-        float dt = map( p, c, trap , intensity);
-        if( t>dis.y || dt<surface ) break;
-
-        t += dt;
-    }
-    
-    
-    if( t<dis.y )
-    {
-        rescol = trap;
-        res = t;
-    }
-
-    return res;
-}
-
-float softshadow( float3 ro, float3 rd, float mint, float k, float3 c , float intensity)
-{
-    float res = 1.0;
-    float t = mint;
-    for( int i=0; i<80; i++ )
-    {
-        float4 kk;
-        float h = map(ro + rd*t, c, kk, intensity);
-        res = min( res, k*h/t );
-        if( res<0.001 ) break;
-        t += clamp( h, 0.002, 0.1 );
-    }
-    return clamp( res, 0.0, 1.0 );
-}
-
-float3 calcNormal( float3 pos, float t, float fovfactor, float3 c, float intensity )
-{
-    float4 tmp;
-    float surface = clamp( 0.3 * 0.0015*t*fovfactor, 0.0001, 0.1 );
-    float2 eps = float2( surface, 0.0 );
-    return normalize( float3(
-                             map(pos+eps.xyy,c,tmp, intensity) - map(pos-eps.xyy,c,tmp, intensity),
-                             map(pos+eps.yxy,c,tmp, intensity) - map(pos-eps.yxy,c,tmp, intensity),
-           map(pos+eps.yyx,c,tmp, intensity) - map(pos-eps.yyx,c,tmp, intensity) ) );
-
-}
-
-
+#include "RCUtils.h"
 
 
 
@@ -165,6 +36,7 @@ fragment half4 rcam04Fragment(SingleInputVertexIO fragmentInput [[stage_in]],
     
     constexpr sampler quadSampler;
     float2 p = 2.0 * fragmentInput.textureCoordinate.xy - 1;
+    p = p / (1 + uniform.audioLevel);
 //    half4 color = inputTexture.sample(quadSampler, fragmentInput.textureCoordinate);
     float time = uniform.time*.15;
 
